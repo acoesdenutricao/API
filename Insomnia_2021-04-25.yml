@@ -1,0 +1,263 @@
+_type: export
+__export_format: 4
+__export_date: 2021-04-25T21:42:25.099Z
+__export_source: insomnia.desktop.app:v2021.2.2
+resources:
+  - _id: req_0411af7fca2044bca0e7e0ed2988d682
+    parentId: fld_968b0f0e967c422b862cb6349fe44ca0
+    modified: 1619386269693
+    created: 1619385379120
+    url: "{{ _.baseUrl }}/1/1/external_links"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Google maps",
+        	"url": "maps.google.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_c07b3ac3af544a8881904c55c6733f18
+    authentication: {}
+    metaSortKey: -1619385379120
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_968b0f0e967c422b862cb6349fe44ca0
+    parentId: wrk_97073fefbc0e40a99980111b675f23df
+    modified: 1619384458422
+    created: 1619384458422
+    name: ExternalLinks
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619384458422
+    _type: request_group
+  - _id: wrk_97073fefbc0e40a99980111b675f23df
+    parentId: null
+    modified: 1619375990931
+    created: 1619375990931
+    name: API
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_5a202b1302f04d558f1938c18e693e25
+    parentId: fld_968b0f0e967c422b862cb6349fe44ca0
+    modified: 1619386274648
+    created: 1619384481755
+    url: "{{ _.baseUrl }}/1/user_external_links"
+    name: indexFromUsers
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Google",
+        	"url": "http://www.google.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_64eb39466f764b879839fccd885132de
+    authentication: {}
+    metaSortKey: -1619379713883.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_458aea1d72d54fb9b11e5cda708562cd
+    parentId: fld_968b0f0e967c422b862cb6349fe44ca0
+    modified: 1619386278787
+    created: 1619385337538
+    url: "{{ _.baseUrl }}/1/category_external_links"
+    name: indexFromCategory
+    description: ""
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Google",
+        	"url": "http://www.google.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_64eb39466f764b879839fccd885132de
+    authentication: {}
+    metaSortKey: -1619377872301.75
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bdc399938ddc4847a11d350a8770e6cb
+    parentId: fld_5277c5ea994146b29fdfb924c1f169cc
+    modified: 1619386264172
+    created: 1619383397047
+    url: "{{ _.baseUrl }}/document_category"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"category": "Idoso"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_64eb39466f764b879839fccd885132de
+    authentication: {}
+    metaSortKey: -1619383397047
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_5277c5ea994146b29fdfb924c1f169cc
+    parentId: wrk_97073fefbc0e40a99980111b675f23df
+    modified: 1619384464302
+    created: 1619383386851
+    name: DocumentCategories
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619383386851
+    _type: request_group
+  - _id: req_867c5de1558e406e8b8b71a75af6398d
+    parentId: fld_61305497bbc34772b7fac2601467e9a2
+    modified: 1619386243213
+    created: 1619386156342
+    url: "{{ _.baseUrl }}/users/2"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1619386156342
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_61305497bbc34772b7fac2601467e9a2
+    parentId: wrk_97073fefbc0e40a99980111b675f23df
+    modified: 1619376010613
+    created: 1619375999359
+    name: Users
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619375999359
+    _type: request_group
+  - _id: req_a6efe1f4712d4a8ea1ca0e26f165ad62
+    parentId: fld_61305497bbc34772b7fac2601467e9a2
+    modified: 1619386249800
+    created: 1619376030719
+    url: "{{ _.baseUrl }}/users"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Maria",
+        	"email":"maria@hotmail.com"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_cea73deece6545d6a34c5c1fda050e82
+    authentication: {}
+    metaSortKey: -1619376030720
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a4b2ef29216a4b4287f95a8d6612c1f5
+    parentId: fld_61305497bbc34772b7fac2601467e9a2
+    modified: 1619386256285
+    created: 1619378004700
+    url: "{{ _.baseUrl }}/users"
+    name: List
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1619376030670
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_cab4bb9bc6321358139251201cb9789e051756fb
+    parentId: wrk_97073fefbc0e40a99980111b675f23df
+    modified: 1619386223081
+    created: 1619375991166
+    name: Base Environment
+    data:
+      baseUrl: http://localhost:4000
+    dataPropertyOrder:
+      "&":
+        - baseUrl
+    color: null
+    isPrivate: false
+    metaSortKey: 1619375991166
+    _type: environment
+  - _id: jar_cab4bb9bc6321358139251201cb9789e051756fb
+    parentId: wrk_97073fefbc0e40a99980111b675f23df
+    modified: 1619375991193
+    created: 1619375991193
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_d7c40b432fad4694b57c0d12e55b0217
+    parentId: wrk_97073fefbc0e40a99980111b675f23df
+    modified: 1619375990945
+    created: 1619375990945
+    fileName: API
+    contents: ""
+    contentType: yaml
+    _type: api_spec
