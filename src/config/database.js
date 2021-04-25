@@ -5,6 +5,7 @@ module.exports = {
     password: 'apiuser',
     database: 'api',
     define: {
-        timestamps: true
+        timestamps: true,
+        underscored: true
     }
 };

@@ -1,7 +1,8 @@
 'use strict';
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('ExternalLinks', {
+    await queryInterface.createTable('external_links', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,34 +10,39 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       url: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
-      DocumentCategoryId: {
+      user_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'DocumentCategories', key: 'id'},
+        allowNull: false,
+        references: { model: 'users', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      UserId: {
+      document_category_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users', key: 'id'},
+        allowNull: false,
+        references: { model: 'document_categories', key: 'id' },
         onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',0    
+        onDelete: 'CASCADE',
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE
       }
     });
   },
+
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('ExternalLinks');
+    await queryInterface.dropTable('external_links');
   }
 };
