@@ -1,26 +1,16 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Clientes', {
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('approach_subjects', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      nome: {
+      subject: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      email: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
-      },
-      cpf: {
-        type: Sequelize.STRING,
-        allowNull: false,
-        unique: true
       },
       createdAt: {
         allowNull: false,
@@ -32,7 +22,7 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Clientes');
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('approach_subjects');
   }
 };

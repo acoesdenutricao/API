@@ -12,6 +12,7 @@ class User extends Model {
 
   static associate(models){
     this.hasMany(models.ExternalLink, { foreignKey: "user_id", as: 'user_external_links'});
+    this.hasMany(models.Information, { foreignKey: "user_id", as: 'user_information_parent'});
   }
 }
 module.exports = User;

@@ -1,8 +1,128 @@
 _type: export
 __export_format: 4
-__export_date: 2021-04-25T21:42:25.099Z
-__export_source: insomnia.desktop.app:v2021.2.2
+__export_date: 2021-04-28T23:55:14.925Z
+__export_source: insomnia.desktop.app:v2021.3.0
 resources:
+  - _id: req_70cc1f7a4ffc4033ba6588059de33599
+    parentId: fld_ced68f89c3b44df7b98f173d30d45b4a
+    modified: 1619654022969
+    created: 1619653808570
+    url: "{{ _.baseUrl }}/subtitles/3"
+    name: Update
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "igor",
+        	"meaning": "igor, o melhor"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_a5b5481b3e4d43aba1854585be82ff8e
+    authentication: {}
+    metaSortKey: -1619653808570
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_ced68f89c3b44df7b98f173d30d45b4a
+    parentId: wrk_97073fefbc0e40a99980111b675f23df
+    modified: 1619652562974
+    created: 1619652562974
+    name: Subtitle
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619652562974
+    _type: request_group
+  - _id: wrk_97073fefbc0e40a99980111b675f23df
+    parentId: null
+    modified: 1619375990931
+    created: 1619375990931
+    name: API
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_19e6f29929e1428dae97f36bb5cd4c24
+    parentId: fld_ced68f89c3b44df7b98f173d30d45b4a
+    modified: 1619653560758
+    created: 1619653534762
+    url: "{{ _.baseUrl }}/subtitles/2"
+    name: Delete
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1619653534762
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f57a6a86f2084ab3b94370ee65570e47
+    parentId: fld_ced68f89c3b44df7b98f173d30d45b4a
+    modified: 1619653394720
+    created: 1619653378258
+    url: "{{ _.baseUrl }}/subtitles"
+    name: Create
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Test",
+        	"meaning": "Testando a API subtitle"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_db1b64ef74e6492d82fda30058cb5302
+    authentication: {}
+    metaSortKey: -1619653378258
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_69d26bdd03a24a989b37c89220d07ab6
+    parentId: fld_ced68f89c3b44df7b98f173d30d45b4a
+    modified: 1619653367861
+    created: 1619652569203
+    url: "{{ _.baseUrl }}/subtitles"
+    name: List
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1619652569203
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_0411af7fca2044bca0e7e0ed2988d682
     parentId: fld_968b0f0e967c422b862cb6349fe44ca0
     modified: 1619386269693
@@ -43,14 +163,6 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1619384458422
     _type: request_group
-  - _id: wrk_97073fefbc0e40a99980111b675f23df
-    parentId: null
-    modified: 1619375990931
-    created: 1619375990931
-    name: API
-    description: ""
-    scope: collection
-    _type: workspace
   - _id: req_5a202b1302f04d558f1938c18e693e25
     parentId: fld_968b0f0e967c422b862cb6349fe44ca0
     modified: 1619386274648
