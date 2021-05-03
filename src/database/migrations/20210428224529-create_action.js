@@ -10,7 +10,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       information: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT('long'),
         allowNull: false
       },
       action_category_id: {

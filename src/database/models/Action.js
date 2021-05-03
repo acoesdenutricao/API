@@ -3,7 +3,7 @@ const { Model, DataTypes } = require('sequelize');
 class Action extends Model {
   static init(sequelize) {
     super.init({
-      information: DataTypes.STRING,
+      information: DataTypes.TEXT,
      }, {
       sequelize
     })

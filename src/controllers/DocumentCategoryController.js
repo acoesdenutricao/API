@@ -24,4 +24,40 @@ module.exports = {
             return res.status(400).send({ error: err });
         }
     },
+
+    async delete(req, res) {
+        try {
+            const { id } = req.params;
+            const documentCategory = await DocumentCategory.findByPk(id);
+
+            if (!documentCategory)
+                return res.status(400).send({ error: "document category not found." });
+
+            await documentCategory.destroy();
+
+            return res.status(200).send({message: "the document category has been deleted.", documentCategory: documentCategory});
+        } catch (err) {
+            return res.status(400).send({ error: err });
+        }
+    },
+
+
+    async update(req, res) {
+        try {
+            const { id } = req.params;
+            const { category } = req.body;
+            const documentCategory = await DocumentCategory.findByPk(id);
+
+            if (!documentCategory)
+                return res.status(400).send({ error: "document category not found." });
+
+            await documentCategory.setAttributes({ category });
+            await documentCategory.save();
+
+            return res.status(200).send({message: "the document category has been changed.", documentCategory: documentCategory});
+        } catch (err) {
+            return res.status(400).send({ error: err });
+        }
+
+    },
 };

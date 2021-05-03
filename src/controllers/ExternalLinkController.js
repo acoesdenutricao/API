@@ -53,4 +53,40 @@ module.exports = {
             return res.status(400).send({ error: err });
         }
     },
+
+    async delete(req, res) {
+        try {
+            const { id } = req.params;
+            const externalLink = await ExternalLink.findByPk(id);
+
+            if (!externalLink)
+                return res.status(400).send({ error: "external link not found." });
+
+            await externalLink.destroy();
+
+            return res.status(200).send({message: "the external link has been deleted.", externalLink: externalLink});
+        } catch (err) {
+            return res.status(400).send({ error: err });
+        }
+    },
+
+
+    async update(req, res) {
+        try {
+            const { id } = req.params;
+            const { name, url } = req.body;
+            const externalLink = await ExternalLink.findByPk(id);
+
+            if (!externalLink)
+                return res.status(400).send({ error: "external link not found." });
+
+            await externalLink.setAttributes({ name, url });
+            await externalLink.save();
+
+            return res.status(200).send({message: "the external link has been changed.", externalLink: externalLink});
+        } catch (err) {
+            return res.status(400).send({ error: err });
+        }
+
+    },
 };
