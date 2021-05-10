@@ -4,8 +4,9 @@ class Information extends Model {
   static init(sequelize) {
     super.init({
      }, {
-      sequelize
+      sequelize, tableName: 'informations',
     })
+    
   }
 
   static associate(models){

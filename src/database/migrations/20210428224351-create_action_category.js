@@ -13,10 +13,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      range: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
