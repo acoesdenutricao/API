@@ -2,7 +2,8 @@ const express = require('express');
 const SampleController = require('./controllers/SampleController');
 
 const routes = express.Router();
+const path = require('path');
 
-routes.get('/sample', SampleController.listar);
+routes.get('/docs', function (req, res) { return res.sendFile(path.join(__dirname + '/templates/example.html')); });
 
 module.exports = routes;
