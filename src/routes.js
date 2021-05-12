@@ -9,6 +9,7 @@ const Action = require('./controllers/ActionController');
 const IntervationLevel = require('./controllers/IntervationLevelController');
 const ApproachSubject = require('./controllers/ApproachSubjectController');
 const Information = require('./controllers/InformationController');
+const CategoryInformation = require('./controllers/CategoryInformationController');
 
 const routes = express.Router();
 
@@ -44,10 +45,14 @@ routes.put('/approach-subjects/:id', ApproachSubject.update);
 
 //informations routes
 routes.get('/informations', Information.index);
+routes.post('/:user_id/:approach_subject_id/:intervation_level_id/:action_category_id/:action_id/informations', Information.store);
+
+//category informations routes
+routes.get('/category-informations', CategoryInformation.index);
 
 // Action routes
-routes.post('/:action_category_id/actions', Action.store);
-routes.get('/:action_category_id/actions', Action.index);
+routes.post('/actions', Action.store);
+routes.get('/actions', Action.index);
 routes.delete('/actions/:id', Action.delete);
 routes.put('/actions/:id', Action.update);
 

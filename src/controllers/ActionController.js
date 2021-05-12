@@ -1,14 +1,12 @@
 const Action = require("../database/models/Action");
-const ActionCategory = require("../database/models/ActionCategory");
 
 
 module.exports = {
     async store(req, res) {
         try {
-            const { action_category_id } = req.params;
             const { information } = req.body;
 
-            const action = await Action.create({ information, action_category_id });
+            const action = await Action.create({ information });
 
             return res.status(201).send(action);
         } catch (err) {
@@ -19,12 +17,9 @@ module.exports = {
 
     async index(req, res) {
         try {
-          const { action_category_id } = req.params;
 
-          const actionCategory = await ActionCategory.findByPk(action_category_id, {
-              include: { association: 'actions' }
-          });
-            return res.status(200).send(actionCategory);
+          const action = await Action.findAll();
+            return res.status(200).send(action);
         } catch (err) {
             return res.status(400).send({ error: err });
         }
