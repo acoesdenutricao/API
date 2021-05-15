@@ -51,6 +51,7 @@ routes.get('/informations', Information.index);
 routes.post('/information/categories', Information.indexCategoryInformation);
 routes.get('/information/action/:category_information_id', Information.indexAction);
 routes.post('/informations', token, Information.store);
+routes.delete('/information/categories/:id', token, Information.delete);
 
 // Action routes
 routes.post('/actions', token, Action.store);

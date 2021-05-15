@@ -33,9 +33,9 @@ module.exports = {
 
   async indexAction(req, res) {
     try {
-      const { category_information_id } = req.params; 
+      const { category_information_id } = req.params;
       const action = await CategoryInformation.findAll({
-        where: {id: category_information_id},
+        where: { id: category_information_id },
         include: {
           association: 'category_information_actions',
         },
@@ -60,6 +60,25 @@ module.exports = {
       return res.status(400).send({ error: err.message });
     }
 
+  },
+
+  async delete(req, res) {
+    try {
+      //:user_id/:approach_subject_id/:intervation_level_id/:action_category_id/:action_id/
+      const { id } = req.params;
+      const category_information = await CategoryInformation.findByPk(id);
+
+      if (!category_information)
+        return res.status(400).send({ error: "category information not found." });
+
+      await category_information.destroy();
+
+      return res.status(200).send({ message: "Category information has been removed", category_information });
+    } catch (err) {
+      return res.status(400).send({ error: err.message });
+    }
+
   }
+
 
 }
