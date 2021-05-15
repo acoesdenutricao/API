@@ -10,7 +10,6 @@ const Action = require('./controllers/ActionController');
 const IntervationLevel = require('./controllers/IntervationLevelController');
 const ApproachSubject = require('./controllers/ApproachSubjectController');
 const Information = require('./controllers/InformationController');
-const CategoryInformation = require('./controllers/CategoryInformationController');
 const LoginController = require('./controllers/LoginController');
 
 const routes = express.Router();
@@ -49,10 +48,9 @@ routes.put('/approach-subjects/:id', token, ApproachSubject.update);
 
 //informations routes
 routes.get('/informations', Information.index);
-routes.post('/:user_id/:approach_subject_id/:intervation_level_id/:action_category_id/:action_id/informations', token, Information.store);
-
-//category informations routes
-routes.get('/category-informations', CategoryInformation.index);
+routes.post('/information/categories', Information.indexCategoryInformation);
+routes.get('/information/action/:category_information_id', Information.indexAction);
+routes.post('/informations', token, Information.store);
 
 // Action routes
 routes.post('/actions', token, Action.store);
