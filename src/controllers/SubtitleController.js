@@ -1,27 +1,39 @@
 const Subtitle = require("../database/models/Subtitle");
+const Action = require("../database/models/Action");
 
 module.exports = {
     async store(req, res) {
         try {
 
             const { name, meaning } = req.body;
+            const { action_id } = req.params;
 
-            const subtitle = await Subtitle.create({ name, meaning });
+            const action = await Action.findByPk(action_id);
+
+            if(!action)
+                throw new Error("action not found.");
+
+
+            const [ subtitle ] = await Subtitle.findOrCreate({ where: {name, meaning} });
+
+            await action.addSubtitle(subtitle);
 
             return res.status(201).send(subtitle);
 
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message.message });
         }
 
     },
 
     async index(req, res) {
         try {
-            const subtitle = await Subtitle.findAll();
+            const subtitle = await Subtitle.findAll({
+                include: {association: 'actions'},
+            });
             return res.status(200).send(subtitle);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -35,9 +47,9 @@ module.exports = {
 
             await subtitle.destroy();
 
-            return res.status(200).send({message: "the subtitle has been deleted.", subtitle: subtitle});
+            return res.status(200).send({ message: "the subtitle has been deleted.", subtitle: subtitle });
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
@@ -54,9 +66,9 @@ module.exports = {
             await subtitle.setAttributes({ name, meaning });
             await subtitle.save();
 
-            return res.status(200).send({message: "the subtitle has been changed.", subtitle: subtitle});
+            return res.status(200).send({ message: "the subtitle has been changed.", subtitle: subtitle });
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },

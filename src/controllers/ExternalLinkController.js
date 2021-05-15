@@ -20,9 +20,12 @@ module.exports = {
 
             const externalLink = await ExternalLink.create({ name, url, user_id, document_category_id });
 
+            if (!externalLink)
+                throw new Error('Error while creating external link.');
+
             return res.status(201).send(externalLink);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
@@ -36,7 +39,7 @@ module.exports = {
             });
             return res.status(200).send(user);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -50,7 +53,7 @@ module.exports = {
             });
             return res.status(200).send(documentCategory);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -64,9 +67,9 @@ module.exports = {
 
             await externalLink.destroy();
 
-            return res.status(200).send({message: "the external link has been deleted.", externalLink: externalLink});
+            return res.status(200).send({ message: "the external link has been deleted.", externalLink: externalLink });
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -83,9 +86,9 @@ module.exports = {
             await externalLink.setAttributes({ name, url });
             await externalLink.save();
 
-            return res.status(200).send({message: "the external link has been changed.", externalLink: externalLink});
+            return res.status(200).send({ message: "the external link has been changed.", externalLink: externalLink });
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },

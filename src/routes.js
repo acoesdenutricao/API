@@ -1,5 +1,6 @@
 const express = require('express');
 
+const token = require('./middlewares/AuthMiddleware');
 const UserController = require('./controllers/UserController');
 const DocumentCategory = require('./controllers/DocumentCategoryController');
 const ExternalLink = require('./controllers/ExternalLinkController');
@@ -10,64 +11,68 @@ const IntervationLevel = require('./controllers/IntervationLevelController');
 const ApproachSubject = require('./controllers/ApproachSubjectController');
 const Information = require('./controllers/InformationController');
 const CategoryInformation = require('./controllers/CategoryInformationController');
+const LoginController = require('./controllers/LoginController');
 
 const routes = express.Router();
 
+//Login routes
+routes.post('/auth', LoginController.auth);
 
 // User routes
 routes.post('/users', UserController.store);
-routes.get('/users', UserController.index);
-routes.delete('/users/:id', UserController.delete);
+routes.get('/users', token, UserController.index);
+routes.delete('/users/:id', token, UserController.delete);
 
 // Subtitle routes
-routes.post('/subtitles', Subtitle.store);
+routes.post('/action/:action_id/subtitles', token, Subtitle.store);
 routes.get('/subtitles', Subtitle.index);
-routes.delete('/subtitles/:id', Subtitle.delete);
-routes.put('/subtitles/:id', Subtitle.update);
+routes.delete('/subtitles/:id', token, Subtitle.delete);
+routes.put('/subtitles/:id', token, Subtitle.update);
 
 // ActionCategory routes
-routes.post('/action-categories', ActionCategory.store);
+routes.post('/action-categories', token, ActionCategory.store);
 routes.get('/action-categories', ActionCategory.index);
-routes.delete('/action-categories/:id', ActionCategory.delete);
-routes.put('/action-categories/:id', ActionCategory.update);
+routes.delete('/action-categories/:id', token, ActionCategory.delete);
+routes.put('/action-categories/:id', token, ActionCategory.update);
 
 // Intervation Level routes
-routes.post('/intervation-levels', IntervationLevel.store);
+routes.post('/intervation-levels', token, IntervationLevel.store);
 routes.get('/intervation-levels', IntervationLevel.index);
-routes.delete('/intervation-levels/:id', IntervationLevel.delete);
-routes.put('/intervation-levels/:id', IntervationLevel.update);
+routes.delete('/intervation-levels/:id', token, IntervationLevel.delete);
+routes.put('/intervation-levels/:id', token, IntervationLevel.update);
 
 // Approach Subject routes
-routes.post('/approach-subjects', ApproachSubject.store);
+routes.post('/approach-subjects', token, ApproachSubject.store);
 routes.get('/approach-subjects', ApproachSubject.index);
-routes.delete('/approach-subjects/:id', ApproachSubject.delete);
-routes.put('/approach-subjects/:id', ApproachSubject.update);
+routes.delete('/approach-subjects/:id', token, ApproachSubject.delete);
+routes.put('/approach-subjects/:id', token, ApproachSubject.update);
 
 //informations routes
 routes.get('/informations', Information.index);
-routes.post('/:user_id/:approach_subject_id/:intervation_level_id/:action_category_id/:action_id/informations', Information.store);
+routes.post('/:user_id/:approach_subject_id/:intervation_level_id/:action_category_id/:action_id/informations', token, Information.store);
 
 //category informations routes
 routes.get('/category-informations', CategoryInformation.index);
 
 // Action routes
-routes.post('/actions', Action.store);
+routes.post('/actions', token, Action.store);
 routes.get('/actions', Action.index);
-routes.delete('/actions/:id', Action.delete);
-routes.put('/actions/:id', Action.update);
+routes.delete('/actions/:id', token, Action.delete);
+routes.put('/actions/:id', token, Action.update);
+routes.delete('/action/:action_id/:subtitle_id', Action.deleteSubtitle);
 
 // DocumentCategory routes
-routes.post('/document-categories', DocumentCategory.store);
+routes.post('/document-categories', token, DocumentCategory.store);
 routes.get('/document-categories', DocumentCategory.index);
-routes.delete('/document-categories/:id', DocumentCategory.delete);
-routes.put('/document-categories/:id', DocumentCategory.update);
+routes.delete('/document-categories/:id', token, DocumentCategory.delete);
+routes.put('/document-categories/:id', token, DocumentCategory.update);
 
 // ExternalLink routes
 routes.get('/:user_id/user-external-links', ExternalLink.indexFromUsers);
 routes.get('/:document_category_id/category-external-links', ExternalLink.indexFromCategory);
-routes.post('/:user_id/:document_category_id/external-links', ExternalLink.store);
-routes.delete('/external-links/:id', ExternalLink.delete);
-routes.put('/external-links/:id', ExternalLink.update);
+routes.post('/:user_id/:document_category_id/external-links', token, ExternalLink.store);
+routes.delete('/external-links/:id', token, ExternalLink.delete);
+routes.put('/external-links/:id', token, ExternalLink.update);
 
 
 

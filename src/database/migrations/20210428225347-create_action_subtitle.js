@@ -3,9 +3,14 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable('action_subtitles', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
       action_id: {
         allowNull: false,
-        primaryKey: true,
         type: Sequelize.INTEGER,
         references: { model: 'actions', key: 'id' },
         onUpdate: 'CASCADE',
@@ -14,7 +19,6 @@ module.exports = {
       subtitle_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
-        primaryKey: true,
         references: { model: 'subtitles', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',

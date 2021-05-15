@@ -8,10 +8,13 @@ module.exports = {
 
             const documentCategory = await DocumentCategory.create({ category });
 
+            if(!documentCategory)
+                throw new Error("Error while creating document category");
+
             return res.status(201).send(documentCategory);
 
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
@@ -21,7 +24,7 @@ module.exports = {
             const documentCategory = await DocumentCategory.findAll();
             return res.status(200).send(documentCategory);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -37,7 +40,7 @@ module.exports = {
 
             return res.status(200).send({message: "the document category has been deleted.", documentCategory: documentCategory});
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -56,7 +59,7 @@ module.exports = {
 
             return res.status(200).send({message: "the document category has been changed.", documentCategory: documentCategory});
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },

@@ -7,13 +7,14 @@ module.exports = {
     async store(req, res) {
 
         try {
-            const { name, email } = req.body;
+            const { name, email, password } = req.body;
 
-            const user = await User.create({ name, email });
+            const user = await User.create({ name, email, password });
+            const jwtToken = User.generateJwt(user);
 
-            return res.status(201).send(user);
+            return res.status(201).send({user, token: jwtToken});
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -22,7 +23,7 @@ module.exports = {
             const user = await User.findAll();
             return res.status(200).send(user);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
@@ -39,7 +40,7 @@ module.exports = {
 
             return res.status(200).send({message: "the user has been deleted.", user: user});
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },

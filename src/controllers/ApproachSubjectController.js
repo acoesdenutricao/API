@@ -8,9 +8,12 @@ module.exports = {
 
             const approachSubject = await ApproachSubject.create({ subject });
 
+            if(!approachSubject)
+                throw new Error("Error while creating approach subject.");
+
             return res.status(201).send(approachSubject);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
@@ -20,7 +23,7 @@ module.exports = {
             const approachSubject = await ApproachSubject.findAll();
             return res.status(200).send(approachSubject);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -36,7 +39,7 @@ module.exports = {
 
             return res.status(200).send({message: "the intervation level has been deleted.", approachSubject: approachSubject});
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -55,7 +58,7 @@ module.exports = {
 
             return res.status(200).send({message: "the intervation level has been changed.", approachSubject: approachSubject});
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },

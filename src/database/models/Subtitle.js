@@ -11,7 +11,7 @@ class Subtitle extends Model {
   }
 
   static associate(models){
-    this.hasMany(models.ActionSubtitle, { foreignKey: 'subtitle_id', as: 'subtitle_parent'});
+    this.belongsToMany(models.Action, {foreignKey: 'subtitle_id', through: 'action_subtitles', as: "actions"});
   }
 }
 module.exports = Subtitle;

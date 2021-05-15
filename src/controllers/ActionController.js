@@ -1,4 +1,5 @@
 const Action = require("../database/models/Action");
+const Subtitle = require('../database/models/Subtitle');
 
 
 module.exports = {
@@ -8,9 +9,12 @@ module.exports = {
 
             const action = await Action.create({ information });
 
+            if (!action)
+                throw new Error('Error while creating action.');
+
             return res.status(201).send(action);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
@@ -18,10 +22,12 @@ module.exports = {
     async index(req, res) {
         try {
 
-          const action = await Action.findAll();
+            const action = await Action.findAll({
+                include: {association: 'subtitles'},
+            });
             return res.status(200).send(action);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -35,9 +41,25 @@ module.exports = {
 
             await action.destroy();
 
-            return res.status(200).send({message: "the action has been deleted.", action: action});
+            return res.status(200).send({ message: "the action has been deleted.", action: action });
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
+        }
+    },
+
+    async deleteSubtitle(req, res) {
+        try {
+            const { action_id, subtitle_id } = req.params;
+            const subtitle = await Subtitle.findByPk(subtitle_id)
+            const action = await Action.findByPk(action_id)
+
+            await action.removeSubtitle(subtitle);
+
+            return res.status(200).send({ message: "the subtitle has been deleted."});
+
+
+        } catch (err) {
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -54,9 +76,9 @@ module.exports = {
             await action.setAttributes({ information });
             await action.save();
 
-            return res.status(200).send({message: "the action has been changed.", action: action});
+            return res.status(200).send({ message: "the action has been changed.", action: action });
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },

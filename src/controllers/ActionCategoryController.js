@@ -4,13 +4,16 @@ const ActionCategory = require("../database/models/ActionCategory");
 module.exports = {
     async store(req, res) {
         try {
-            const { category, range } = req.body;
+            const { category } = req.body;
 
-            const actionCategory = await ActionCategory.create({ category, range });
+            const actionCategory = await ActionCategory.create({ category });
+
+            if(!actionCategory)
+                throw new Error('Error while creating action category.');
 
             return res.status(201).send(actionCategory);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
@@ -20,7 +23,7 @@ module.exports = {
             const actionCategory = await ActionCategory.findAll();
             return res.status(200).send(actionCategory);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -36,7 +39,7 @@ module.exports = {
 
             return res.status(200).send({message: "the action category has been deleted.", actionCategory: actionCategory});
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -55,7 +58,7 @@ module.exports = {
 
             return res.status(200).send({message: "the action category has been changed.", actionCategory: actionCategory});
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },

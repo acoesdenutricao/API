@@ -7,9 +7,17 @@ module.exports = {
       const informations = await Information.findAll();
       return res.status(200).send(informations);
     } catch (err) {
-      return res.status(400).send({ error: err });
+      return res.status(400).send({ error: err.message });
     }
+  },
 
+  async indexCategoryInformation(req, res) {
+    try {
+      const informations = await Information.findAll();
+      return res.status(200).send(informations);
+    } catch (err) {
+      return res.status(400).send({ error: err.message });
+    }
   },
 
   async store(req, res) {
@@ -23,7 +31,7 @@ module.exports = {
 
       return res.status(200).send({information, category_information});
     } catch (err) {
-      return res.status(400).send({ error: err });
+      return res.status(400).send({ error: err.message });
     }
 
   }

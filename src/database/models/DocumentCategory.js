@@ -10,7 +10,7 @@ class DocumentCategory extends Model {
   }
 
   static associate(models){
-    this.hasMany(models.ExternalLink, { foreignKey: "document_category_id", as: 'category_external_links'});
+    this.hasMany(models.ExternalLink, { foreignKey: "document_category_id", as: 'document_category_links'});
   }
 }
 module.exports = DocumentCategory;

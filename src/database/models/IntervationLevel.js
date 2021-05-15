@@ -10,7 +10,7 @@ class IntervationLevel extends Model {
   }
 
   static associate(models){
-      this.hasMany(models.Information, { foreignKey: 'intervation_level_id', as: 'intevation_level_parent'});
+      this.hasMany(models.Information, { foreignKey: 'intervation_level_id', as: 'intevation_level_informations'});
   }
 }
 module.exports = IntervationLevel;

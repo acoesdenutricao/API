@@ -10,8 +10,8 @@ class Action extends Model {
   }
 
   static associate(models){
-    this.hasMany(models.ActionSubtitle, { foreignKey: "action_id", as: 'action_subtitle_parent'});
-    this.hasMany(models.Information, { foreignKey: "action_id", as: 'action_information_parent'});
+    this.hasMany(models.CategoryInformation, { foreignKey: "action_id", as: 'action_informations'});
+    this.belongsToMany(models.Subtitle, {foreignKey: "action_id", through: 'action_subtitles', as: "subtitles"});
   }
 }
 module.exports = Action;

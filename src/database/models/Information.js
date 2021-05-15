@@ -10,11 +10,10 @@ class Information extends Model {
   }
 
   static associate(models){
-      this.belongsTo(models.Action, { foreignKey: 'action_id', as: 'action_information_son'});
-      this.belongsTo(models.IntervationLevel, { foreignKey: 'intervation_level_id', as: 'intervation_level_son'});
-      this.belongsTo(models.ApproachSubject, { foreignKey: 'approach_subject_id', as: 'approach_subject_son'});
-      this.belongsTo(models.User, { foreignKey: 'user_id', as: 'user_information_son'});
-      this.hasMany(models.CategoryInformation, { foreignKey: "information_id", as: 'category_information_parent'});
+      this.belongsTo(models.IntervationLevel, { foreignKey: 'intervation_level_id', as: 'information_intervation_levels'});
+      this.belongsTo(models.ApproachSubject, { foreignKey: 'approach_subject_id', as: 'information_approach_subjects'});
+      this.belongsTo(models.User, { foreignKey: 'user_id', as: 'information_users'});
+      this.hasMany(models.CategoryInformation, { foreignKey: "information_id", as: 'information_categories'});
   }
 }
 module.exports = Information;

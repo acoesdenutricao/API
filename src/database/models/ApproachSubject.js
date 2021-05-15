@@ -10,7 +10,7 @@ class ApproachSubject extends Model {
   }
 
   static associate(models){
-      this.hasMany(models.Information, { foreignKey: 'approach_subject_id', as: 'approach_subject_parent'});
+    this.hasMany(models.Information, { foreignKey: 'approach_subject_id', as: 'approach_subject_informations'});
   }
 }
 module.exports = ApproachSubject;

@@ -9,7 +9,7 @@ module.exports = {
     });
       return res.status(200).send(categoryInformation);
     } catch (err) {
-      return res.status(400).send({ error: err });
+      return res.status(400).send({ error: err.message });
     }
 
   },
@@ -25,7 +25,7 @@ module.exports = {
 
       return res.status(200).send(information, category_information);
     } catch (err) {
-      return res.status(400).send({ error: err });
+      return res.status(400).send({ error: err.message });
     }
 
   }

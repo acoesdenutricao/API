@@ -8,9 +8,12 @@ module.exports = {
 
             const intervationLevel = await IntervationLevel.create({ title });
 
+            if (!intervationLevel)
+                throw new Error("Error while creating intervation level.");
+
             return res.status(201).send(intervationLevel);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
@@ -20,7 +23,7 @@ module.exports = {
             const intervationLevel = await IntervationLevel.findAll();
             return res.status(200).send(intervationLevel);
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -34,9 +37,9 @@ module.exports = {
 
             await intervationLevel.destroy();
 
-            return res.status(200).send({message: "the intervation level has been deleted.", intervationLevel: intervationLevel});
+            return res.status(200).send({ message: "the intervation level has been deleted.", intervationLevel: intervationLevel });
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
     },
 
@@ -53,9 +56,9 @@ module.exports = {
             await intervationLevel.setAttributes({ title });
             await intervationLevel.save();
 
-            return res.status(200).send({message: "the intervation level has been changed.", intervationLevel: intervationLevel});
+            return res.status(200).send({ message: "the intervation level has been changed.", intervationLevel: intervationLevel });
         } catch (err) {
-            return res.status(400).send({ error: err });
+            return res.status(400).send({ error: err.message });
         }
 
     },
