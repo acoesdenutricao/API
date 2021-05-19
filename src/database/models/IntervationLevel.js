@@ -4,6 +4,7 @@ class IntervationLevel extends Model {
   static init(sequelize) {
     super.init({
       title: DataTypes.STRING,
+      color: DataTypes.STRING,
      }, {
       sequelize
     })

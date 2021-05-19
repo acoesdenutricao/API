@@ -4,6 +4,7 @@ class ApproachSubject extends Model {
   static init(sequelize) {
     super.init({
       subject: DataTypes.STRING,
+      icon_name: DataTypes.STRING,
      }, {
       sequelize
     })
