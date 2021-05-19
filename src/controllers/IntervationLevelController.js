@@ -4,9 +4,9 @@ const IntervationLevel = require("../database/models/IntervationLevel");
 module.exports = {
     async store(req, res) {
         try {
-            const { title } = req.body;
+            const { title, color } = req.body;
 
-            const intervationLevel = await IntervationLevel.create({ title });
+            const intervationLevel = await IntervationLevel.create({ title, color });
 
             if (!intervationLevel)
                 throw new Error("Error while creating intervation level.");
@@ -47,13 +47,13 @@ module.exports = {
     async update(req, res) {
         try {
             const { id } = req.params;
-            const { title } = req.body;
+            const { title, color } = req.body;
             const intervationLevel = await IntervationLevel.findByPk(id);
 
             if (!intervationLevel)
                 return res.status(400).send({ error: "intervation level not found." });
 
-            await intervationLevel.setAttributes({ title });
+            await intervationLevel.setAttributes({ title, color });
             await intervationLevel.save();
 
             return res.status(200).send({ message: "the intervation level has been changed.", intervationLevel: intervationLevel });
