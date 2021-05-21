@@ -48,7 +48,7 @@ routes.put('/approach-subjects/:id', token, ApproachSubject.update);
 
 //informations routes
 routes.get('/informations', Information.index);
-routes.post('/information/categories', Information.indexCategoryInformation);
+routes.get('/information/:approach_subject_id/:intervation_level_id/categories', Information.indexCategoryInformation);
 routes.get('/information/action/:category_information_id', Information.indexAction);
 routes.post('/informations', token, Information.store);
 routes.delete('/information/categories/:id', token, Information.delete);

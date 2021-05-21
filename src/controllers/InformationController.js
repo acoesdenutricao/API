@@ -13,7 +13,7 @@ module.exports = {
 
   async indexCategoryInformation(req, res) {
     try {
-      const { approach_subject_id, intervation_level_id } = req.body;
+      const { approach_subject_id, intervation_level_id } = req.params;
       const informations = await Information.findAll({
         where: { approach_subject_id, intervation_level_id },
         include: [{
