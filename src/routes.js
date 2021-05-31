@@ -37,12 +37,14 @@ routes.put('/action-categories/:id', token, ActionCategory.update);
 // Intervation Level routes
 routes.post('/intervation-levels', token, IntervationLevel.store);
 routes.get('/intervation-levels', IntervationLevel.index);
+routes.get('/intervation-levels/:id', IntervationLevel.get);
 routes.delete('/intervation-levels/:id', token, IntervationLevel.delete);
 routes.put('/intervation-levels/:id', token, IntervationLevel.update);
 
 // Approach Subject routes
 routes.post('/approach-subjects', token, ApproachSubject.store);
 routes.get('/approach-subjects', ApproachSubject.index);
+routes.get('/approach-subjects/:id', ApproachSubject.get);
 routes.delete('/approach-subjects/:id', token, ApproachSubject.delete);
 routes.put('/approach-subjects/:id', token, ApproachSubject.update);
 

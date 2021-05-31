@@ -1,9 +1,9 @@
 version: '3.3'
 
 services:
-  api:
+  nutapi:
     image: node:14
-    container_name: api
+    container_name: nutapi
     working_dir: /app
     ports:
       - '4000:4000'

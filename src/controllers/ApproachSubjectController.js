@@ -18,6 +18,20 @@ module.exports = {
 
     },
 
+    async get(req, res) {
+        try {
+            const { id } = req.params;
+            const approachSubject = await ApproachSubject.findByPk(id);
+
+            if (!approachSubject)
+                return res.status(400).send({ error: "approach subject not found." });
+            
+            return res.status(200).send(approachSubject);
+        } catch (err) {
+            return res.status(400).send({ error: err.message });
+        }
+    },
+
     async index(req, res) {
         try {
             const approachSubject = await ApproachSubject.findAll();
