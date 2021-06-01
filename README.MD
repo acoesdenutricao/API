@@ -4,29 +4,33 @@
 
 ## Documentação Entregue
 
-* Todas as documentações das dailys da semana 5 à 8.
-* Diagrama de Classes
-* Diagrama de Banco de Dados
-* Fluxo GIT
-* Documentação de dailys no notion
-* Documentação dos casos de uso
-* Incrementos e alterações no backlog
+* Todas as documentações das dailys da semana 7 à 10.
+* Atualização do Diagrama de Banco de Dados
+* Atualização do Documento de Requisitos
+* Atualização da Lista de Ferramentas
+* Criação da documentação da API (usando raml)
+* Criação da documentação de Casos de Teste
+* Criação da documentação de Testes de Usabilidade
+* Criação da documentação do Wireframe de Administrador
 
 ## Mockup
 
-* Wireframe do usuário validado
-* Layout de usuário completo
-* Wireframe do administrador iniciado
+* Wireframe do usuário de administrador
+* Início do layout de administrador
+* Teste de Usabilidade no wireframe de administrador (usando maze)
 
 ## Código Entregue - API
 
-* Todas as tabelas do diagrama de banco de dados adicionada via migration. (Postgres)
-* CRUDS de legenda, sujeito da intervenção, nível da abordagem, usuário, e ação completos 
-* Docker totalmente implantando
+* API Completa, faltando apenas os testes automatizados
+* Todos os CRUDS completos
+* Todas as rotas documentadas via RAML
+* API rodando no servidor com docker
+* Toda a matriz de nutrição e alimentação povoada no banco via seeders
+* Início da preparação dos testes automatizados
 
 ## Código Entregue - APP
 
-* Versão da tela inicial do app completa
-* Versão da tela de histórico do app completa
-* Navegação entre as telas completa
+* Tela de favoritos adicionada
+* Tela de documentos adicionada
+* Conexão com a API na tela inicial e na tela de informação
 
