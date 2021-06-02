@@ -31,6 +31,21 @@ module.exports = {
         }
     },
 
+    async get(req, res) {
+        try {
+            const {id} = req.params;
+            const action = await Action.findAll({
+                where: { id: id },
+                include: {
+                  association: 'subtitles',
+                },
+            });
+            return res.status(200).send(action);
+        } catch (err) {
+            return res.status(400).send({ error: err.message });
+        }
+    },
+
     async delete(req, res) {
         try {
             const { id } = req.params;

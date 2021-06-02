@@ -28,6 +28,7 @@ routes.get('/subtitles', Subtitle.index);
 routes.delete('/subtitles/:id', token, Subtitle.delete);
 routes.put('/subtitles/:id', token, Subtitle.update);
 
+
 // ActionCategory routes
 routes.post('/action-categories', token, ActionCategory.store);
 routes.get('/action-categories', ActionCategory.index);
@@ -58,6 +59,7 @@ routes.delete('/information/categories/:id', token, Information.delete);
 // Action routes
 routes.post('/actions', token, Action.store);
 routes.get('/actions', Action.index);
+routes.get('/actions/:id',Action.get)
 routes.delete('/actions/:id', token, Action.delete);
 routes.put('/actions/:id', token, Action.update);
 routes.delete('/action/:action_id/:subtitle_id', Action.deleteSubtitle);

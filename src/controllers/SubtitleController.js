@@ -28,9 +28,7 @@ module.exports = {
 
     async index(req, res) {
         try {
-            const subtitle = await Subtitle.findAll({
-                include: {association: 'actions'},
-            });
+            const subtitle = await Subtitle.findAll();
             return res.status(200).send(subtitle);
         } catch (err) {
             return res.status(400).send({ error: err.message });
