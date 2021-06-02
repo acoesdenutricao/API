@@ -24,6 +24,7 @@ routes.delete('/users/:id', token, UserController.delete);
 
 // Subtitle routes
 routes.post('/action/:action_id/subtitles', token, Subtitle.store);
+routes.post('/subtitles', token, Subtitle.storeOnlySub);
 routes.get('/subtitles', Subtitle.index);
 routes.delete('/subtitles/:id', token, Subtitle.delete);
 routes.put('/subtitles/:id', token, Subtitle.update);

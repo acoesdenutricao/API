@@ -25,6 +25,19 @@ module.exports = {
         }
 
     },
+    async storeOnlySub(req, res) {
+        try {
+            const { name, meaning } = req.body;
+
+            const subtitle = await Subtitle.create({name, meaning})
+
+            return res.status(201).send({subtitle})
+            
+        } catch (err) {
+            return res.status(400).send({ error: err.message.message });
+        }
+    },
+
 
     async index(req, res) {
         try {
