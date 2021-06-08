@@ -2,15 +2,19 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js --ignore __test__",
+    "pretest": "TEST_ENV=test yarn sequelize db:migrate",
+    "test": "TEST_ENV=test jest",
+    "posttest": "TEST_ENV=test yarn sequelize db:migrate:undo:all"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "sqlite3": "^5.0.2"
   },
   "dependencies": {
     "@brazilian-utils/validators": "^0.1.9",
@@ -20,6 +24,7 @@
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
+    "jest": "^27.0.4",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.5.1",
     "sequelize": "^6.5.0",

@@ -25,8 +25,7 @@ module.exports = (req, res, next) => {
                 throw new Error('Invalid token');
             }
 
-            req.profile = decoded.profile;
-            req.user = decoded.user;
+            req.email = decoded.email;
 
             return next();
         });

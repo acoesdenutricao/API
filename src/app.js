@@ -1,7 +1,10 @@
 const express = require('express');
 const routes = require('./routes');
 
-require('dotenv').config()
+require('dotenv').config({
+  path: process.env.TEST_ENV === "test" ? ".env.test" : ".env.test"
+});
+
 require('./database');
 
 const app = express();
@@ -10,7 +13,4 @@ app.use(express.json());
 app.use(routes);
 
 
-
-app.listen(process.env.APP_PORT, '0.0.0.0', function() {
-    console.log('Listening on port ' + process.env.APP_PORT)
-});
+module.exports = app;
