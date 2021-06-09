@@ -32,6 +32,13 @@ services:
     ports:
       - "5050:5050"
 
+  sonarqube:
+    container_name:  sonarqube
+    image:  sonarqube:latest
+    ports:
+        -  "9000:9000"
+        -  "9092:9092"
+
     
 volumes:
   postgresql:

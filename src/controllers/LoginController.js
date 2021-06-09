@@ -7,7 +7,6 @@ module.exports = {
             const { email, password } = req.body;
 
             const user = await User.findOne({ where: { email: email } });
-            console.log(user);
 
             if (user === null) {
                 throw new Error('User not found.');
