@@ -1,8 +1,5 @@
 const User = require("../database/models/User");
 
-// const { isValidCpf } = require('@brazilian-utils/validators');
-// const { validate } = require('email-validator');
-
 module.exports = {
     async store(req, res) {
 

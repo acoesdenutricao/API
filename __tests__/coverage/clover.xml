@@ -1,21 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
     <file path="/app/__tests__/integration/token.test.js">
-        <testCase name="Token JWT jwt should be a corret token" duration="1113"/>
-        <testCase name="Token JWT should access a private route" duration="424"/>
-        <testCase name="Token JWT should not access a private route with invalid token" duration="503"/>
-        <testCase name="Token JWT should not access a private route with no token provided" duration="424"/>
+        <testCase name="Token JWT should access a private route" duration="1692"/>
+        <testCase name="Token JWT should not access a private route with invalid token" duration="1054"/>
+        <testCase name="Token JWT should not access a private route with no token provided" duration="1115"/>
     </file>
     <file path="/app/__tests__/unit/user.test.js">
-        <testCase name="User should encrypt user password" duration="1141"/>
-        <testCase name="User should be created" duration="637"/>
-        <testCase name="User should be deleted" duration="809"/>
-        <testCase name="User user should not found in delete function" duration="398"/>
+        <testCase name="User should encrypt user password" duration="1084"/>
+        <testCase name="User should be created" duration="1490"/>
+        <testCase name="User should be not created without" duration="457"/>
+        <testCase name="User should be deleted" duration="687"/>
+        <testCase name="User user should not found in delete function" duration="692"/>
     </file>
     <file path="/app/__tests__/integration/session.test.js">
-        <testCase name="Authentication should authenticate with valid credenstials" duration="1205"/>
-        <testCase name="Authentication should not authenticate with invalid password" duration="694"/>
-        <testCase name="Authentication should not authenticate with invalid email" duration="349"/>
-        <testCase name="Authentication should return a JWT when authenticated" duration="774"/>
+        <testCase name="Authentication should authenticate with valid credentials" duration="1329"/>
+        <testCase name="Authentication should not authenticate with invalid password" duration="634"/>
+        <testCase name="Authentication should not authenticate with invalid email" duration="787"/>
+        <testCase name="Authentication should not authenticate with invalid password" duration="892"/>
+        <testCase name="Authentication should return a JWT when authenticated" duration="1533"/>
+    </file>
+    <file path="/app/__tests__/unit/Action.test.js">
+        <testCase name="Action should be created" duration="1955"/>
+        <testCase name="Action should be not created without" duration="634"/>
+        <testCase name="Action should be listed" duration="55"/>
+        <testCase name="Action should be listed by id" duration="202"/>
+        <testCase name="Action should be deleted" duration="873"/>
+        <testCase name="Action should not be deleted" duration="790"/>
+        <testCase name="Action should be updated" duration="729"/>
+        <testCase name="Action should not be updated" duration="435"/>
+    </file>
+    <file path="/app/__tests__/unit/ActionCategory.test.js">
+        <testCase name="Action Category should be created" duration="1178"/>
+        <testCase name="Action Category should be not created without" duration="1506"/>
+        <testCase name="Action Category should be listed" duration="24"/>
+        <testCase name="Action Category should be deleted" duration="1891"/>
+        <testCase name="Action Category should not be deleted" duration="464"/>
+        <testCase name="Action Category should be updated" duration="746"/>
+        <testCase name="Action Category should not be updated" duration="460"/>
     </file>
 </testExecutions>

@@ -32,7 +32,7 @@ module.exports = {
 
     async indexFromUsers(req, res) {
         try {
-            const { user_id, document_category_id } = req.params;
+            const { user_id } = req.params;
 
             const user = await User.findByPk(user_id, {
                 include: { association: 'user_external_links' }
@@ -83,7 +83,7 @@ module.exports = {
             if (!externalLink)
                 return res.status(400).send({ error: "external link not found." });
 
-            await externalLink.setAttributes({ name, url });
+            externalLink.setAttributes({ name, url });
             await externalLink.save();
 
             return res.status(200).send({ message: "the external link has been changed.", externalLink: externalLink });

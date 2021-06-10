@@ -3,7 +3,7 @@ sonarqubeScanner(
   {
     serverUrl: 'http://sonarqube:9000',
     options: {
-      'sonar.login': '08548a95f4891a13738d186fcced4fb2ea74671f',
+      'sonar.login': '72cd5e76b17f55d84fd4bd864c3ed4b360fbfd92',
       'sonar.sources': 'src',
       'sonar.tests': '__tests__',
       'sonar.inclusions': '**', // Entry point of your code

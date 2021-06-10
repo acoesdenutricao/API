@@ -74,7 +74,7 @@ module.exports = {
             if (!subtitle)
                 return res.status(400).send({ error: "subtitle not found." });
 
-            await subtitle.setAttributes({ name, meaning });
+            subtitle.setAttributes({ name, meaning });
             await subtitle.save();
 
             return res.status(200).send({ message: "the subtitle has been changed.", subtitle: subtitle });

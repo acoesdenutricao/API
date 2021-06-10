@@ -53,7 +53,7 @@ module.exports = {
             if (!actionCategory)
                 return res.status(400).send({ error: "action category not found." });
 
-            await actionCategory.setAttributes({ category, range });
+            actionCategory.setAttributes({ category, range });
             await actionCategory.save();
 
             return res.status(200).send({message: "the action category has been changed.", actionCategory: actionCategory});

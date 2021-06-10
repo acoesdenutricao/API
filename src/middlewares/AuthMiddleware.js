@@ -4,11 +4,11 @@ module.exports = (req, res, next) => {
     try {
         const authHeader = req.headers.authorization; 
 
-        if (!authHeader) {n
+        if (!authHeader) {
             throw new Error('No token provided');
         }
         
-        const [schema, token] = authHeader.split(' ');
+        const [ , token] = authHeader.split(' ');
 
 
         jwt.verify(token, process.env.API_SALT, (err, decoded) => {

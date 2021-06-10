@@ -67,7 +67,7 @@ module.exports = {
             if (!intervationLevel)
                 return res.status(400).send({ error: "intervation level not found." });
 
-            await intervationLevel.setAttributes({ title, color });
+            intervationLevel.setAttributes({ title, color });
             await intervationLevel.save();
 
             return res.status(200).send({ message: "the intervation level has been changed.", intervationLevel: intervationLevel });

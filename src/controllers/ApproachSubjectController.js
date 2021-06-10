@@ -67,7 +67,7 @@ module.exports = {
             if (!approachSubject)
                 return res.status(400).send({ error: "intervation level not found." });
 
-            await approachSubject.setAttributes({ subject, icon_name });
+            approachSubject.setAttributes({ subject, icon_name });
             await approachSubject.save();
 
             return res.status(200).send({message: "the intervation level has been changed.", approachSubject: approachSubject});

@@ -54,7 +54,7 @@ module.exports = {
             if (!documentCategory)
                 return res.status(400).send({ error: "document category not found." });
 
-            await documentCategory.setAttributes({ category });
+            documentCategory.setAttributes({ category });
             await documentCategory.save();
 
             return res.status(200).send({message: "the document category has been changed.", documentCategory: documentCategory});

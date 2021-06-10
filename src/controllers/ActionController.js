@@ -88,7 +88,7 @@ module.exports = {
             if (!action)
                 return res.status(400).send({ error: "action not found." });
 
-            await action.setAttributes({ information });
+            action.setAttributes({ information });
             await action.save();
 
             return res.status(200).send({ message: "the action has been changed.", action: action });
