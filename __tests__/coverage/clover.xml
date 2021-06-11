@@ -1,41 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testExecutions version="1">
-    <file path="/app/__tests__/integration/token.test.js">
-        <testCase name="Token JWT should access a private route" duration="1692"/>
-        <testCase name="Token JWT should not access a private route with invalid token" duration="1054"/>
-        <testCase name="Token JWT should not access a private route with no token provided" duration="1115"/>
+    <file path="/home/ighuc/Documents/Projects/API/__tests__/unit/ActionCategory.test.js">
+        <testCase name="Action Category should be created" duration="871"/>
+        <testCase name="Action Category should be not created without" duration="1339"/>
+        <testCase name="Action Category should be listed" duration="92"/>
+        <testCase name="Action Category should be deleted" duration="704"/>
+        <testCase name="Action Category should not be deleted" duration="578"/>
+        <testCase name="Action Category should be updated" duration="608"/>
+        <testCase name="Action Category should not be updated" duration="640"/>
     </file>
-    <file path="/app/__tests__/unit/user.test.js">
-        <testCase name="User should encrypt user password" duration="1084"/>
-        <testCase name="User should be created" duration="1490"/>
-        <testCase name="User should be not created without" duration="457"/>
-        <testCase name="User should be deleted" duration="687"/>
-        <testCase name="User user should not found in delete function" duration="692"/>
+    <file path="/home/ighuc/Documents/Projects/API/__tests__/integration/token.test.js">
+        <testCase name="Token JWT should access a private route" duration="1570"/>
+        <testCase name="Token JWT should not access a private route with invalid token" duration="2710"/>
+        <testCase name="Token JWT should not access a private route with no token provided" duration="654"/>
     </file>
-    <file path="/app/__tests__/integration/session.test.js">
-        <testCase name="Authentication should authenticate with valid credentials" duration="1329"/>
-        <testCase name="Authentication should not authenticate with invalid password" duration="634"/>
-        <testCase name="Authentication should not authenticate with invalid email" duration="787"/>
-        <testCase name="Authentication should not authenticate with invalid password" duration="892"/>
-        <testCase name="Authentication should return a JWT when authenticated" duration="1533"/>
+    <file path="/home/ighuc/Documents/Projects/API/__tests__/integration/session.test.js">
+        <testCase name="Authentication should not authenticate with invalid password" duration="671"/>
+        <testCase name="Authentication should authenticate with valid credentials" duration="3652"/>
+        <testCase name="Authentication should not authenticate with invalid email" duration="321"/>
+        <testCase name="Authentication should not authenticate with invalid password" duration="450"/>
+        <testCase name="Authentication should return a JWT when authenticated" duration="978"/>
     </file>
-    <file path="/app/__tests__/unit/Action.test.js">
-        <testCase name="Action should be created" duration="1955"/>
-        <testCase name="Action should be not created without" duration="634"/>
-        <testCase name="Action should be listed" duration="55"/>
-        <testCase name="Action should be listed by id" duration="202"/>
-        <testCase name="Action should be deleted" duration="873"/>
-        <testCase name="Action should not be deleted" duration="790"/>
-        <testCase name="Action should be updated" duration="729"/>
-        <testCase name="Action should not be updated" duration="435"/>
+    <file path="/home/ighuc/Documents/Projects/API/__tests__/unit/user.test.js">
+        <testCase name="User should encrypt user password" duration="789"/>
+        <testCase name="User should be listed" duration="2915"/>
+        <testCase name="User should be created" duration="2692"/>
+        <testCase name="User should be not created without" duration="243"/>
+        <testCase name="User should be deleted" duration="854"/>
+        <testCase name="User user should not found in delete function" duration="332"/>
     </file>
-    <file path="/app/__tests__/unit/ActionCategory.test.js">
-        <testCase name="Action Category should be created" duration="1178"/>
-        <testCase name="Action Category should be not created without" duration="1506"/>
-        <testCase name="Action Category should be listed" duration="24"/>
-        <testCase name="Action Category should be deleted" duration="1891"/>
-        <testCase name="Action Category should not be deleted" duration="464"/>
-        <testCase name="Action Category should be updated" duration="746"/>
-        <testCase name="Action Category should not be updated" duration="460"/>
+    <file path="/home/ighuc/Documents/Projects/API/__tests__/unit/DocumentCategory.test.js">
+        <testCase name="Document Category should be created" duration="2303"/>
+        <testCase name="Document Category should be not created without" duration="820"/>
+        <testCase name="Document Category should be listed" duration="434"/>
+        <testCase name="Document Category should be deleted" duration="3204"/>
+        <testCase name="Document Category should not be deleted" duration="1532"/>
+        <testCase name="Document Category should be updated" duration="632"/>
+        <testCase name="Document Category should not be updated" duration="830"/>
+    </file>
+    <file path="/home/ighuc/Documents/Projects/API/__tests__/unit/Action.test.js">
+        <testCase name="Action should be created" duration="1708"/>
+        <testCase name="Action should be not created without" duration="1286"/>
+        <testCase name="Action should be listed" duration="1335"/>
+        <testCase name="Action should be listed by id" duration="402"/>
+        <testCase name="Action should be deleted" duration="564"/>
+        <testCase name="Action should not be deleted" duration="342"/>
+        <testCase name="Action should be updated" duration="553"/>
+        <testCase name="Action should not be updated" duration="919"/>
+        <testCase name="Action should subtitle not found" duration="370"/>
+        <testCase name="Action should action not found" duration="1589"/>
+        <testCase name="Action should action be deleted" duration="1436"/>
+    </file>
+    <file path="/home/ighuc/Documents/Projects/API/__tests__/unit/ExternalLink.test.js">
+        <testCase name="External Link should be created" duration="1032"/>
+        <testCase name="External Link should be not created without user" duration="1903"/>
+        <testCase name="External Link should be not created without document category" duration="431"/>
+        <testCase name="External Link should be listed by user" duration="656"/>
+        <testCase name="External Link should not be listed by user" duration="2361"/>
+        <testCase name="External Link should be listed by document category" duration="1048"/>
+        <testCase name="External Link should not be listed by document category" duration="145"/>
+        <testCase name="External Link should be deleted" duration="2035">
+            <failure message="Error: expect(received).toBe(expected) // Object.is equality"><![CDATA[Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: 200
+Received: 400
+    at Object.it (/home/ighuc/Documents/Projects/API/__tests__/unit/ExternalLink.test.js:108:29)
+    at process._tickCallback (internal/process/next_tick.js:68:7)]]></failure>
+        </testCase>
+        <testCase name="External Link should not be deleted" duration="618"/>
+        <testCase name="External Link should be updated" duration="724"/>
+        <testCase name="External Link should not be updated" duration="909"/>
+    </file>
+    <file path="/home/ighuc/Documents/Projects/API/__tests__/unit/ApproachSubject.test.js">
+        <testCase name="Approach Subject should be created" duration="2216"/>
+        <testCase name="Approach Subject should be not created without" duration="380"/>
+        <testCase name="Approach Subject should be listed" duration="198"/>
+        <testCase name="Approach Subject should be listed by id" duration="104"/>
+        <testCase name="Approach Subject should not be listed by id" duration="507"/>
+        <testCase name="Approach Subject should be deleted" duration="511"/>
+        <testCase name="Approach Subject should not be deleted" duration="967"/>
+        <testCase name="Approach Subject should be updated" duration="1158"/>
+        <testCase name="Approach Subject should not be updated" duration="547"/>
     </file>
 </testExecutions>

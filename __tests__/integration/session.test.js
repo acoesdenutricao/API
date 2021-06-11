@@ -1,34 +1,15 @@
 const request = require("supertest");
 const app = require('../../src/app');
+const User = require("../../src/database/models/User");
 const factory = require('../utils/factories');
 const truncate = require("../utils/truncate");
+const flushPromises = require('flush-promises');
 
 
 
 describe('Authentication', () => {
-
-  afterEach(async () => {
-    await truncate("user");
-  });
-
   beforeEach(async () => {
     await truncate("user");
-  });
-
-  it('should authenticate with valid credentials', async () => {
-    const user = await factory.create('User', {
-      password: "12345678",
-    });
-
-
-    const response = await (request(app)
-      .post("/auth")
-      .send({
-        email: user.email,
-        password: "12345678"
-      }));
-
-    expect(response.status).toBe(200);
   });
 
   it('should not authenticate with invalid password', async () => {
@@ -48,11 +29,22 @@ describe('Authentication', () => {
     expect(response.status).toBe(500);
   });
 
-  it('should not authenticate with invalid email', async () => {
-
+  it('should authenticate with valid credentials', async () => {
     const user = await factory.create('User', {
       password: "12345678",
     });
+
+    const response = await request(app)
+      .post("/auth")
+      .send({
+        email: user.email,
+        password: "12345678"
+      });
+
+    expect(response.status).toBe(200);
+  });
+
+  it('should not authenticate with invalid email', async () => {
 
     const response = await request(app)
       .post("/auth")

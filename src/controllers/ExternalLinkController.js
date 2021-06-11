@@ -10,18 +10,16 @@ module.exports = {
             const { user_id, document_category_id } = req.params;
 
             const user = await User.findByPk(user_id);
-            const documentCaregory = await DocumentCategory.findByPk(document_category_id);
 
             if (!user)
                 return res.status(400).send({ error: "user not found." });
+
+            const documentCaregory = await DocumentCategory.findByPk(document_category_id);
             if (!documentCaregory)
                 return res.status(400).send({ error: "document category not found." });
 
 
             const externalLink = await ExternalLink.create({ name, url, user_id, document_category_id });
-
-            if (!externalLink)
-                throw new Error('Error while creating external link.');
 
             return res.status(201).send(externalLink);
         } catch (err) {

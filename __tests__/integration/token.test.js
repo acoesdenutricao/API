@@ -8,10 +8,6 @@ describe('Token JWT', () => {
   beforeEach(async () => {
     await truncate("user");
   });
-  afterEach(async () => {
-    await truncate("user");
-  });
-
   it('should access a private route', async () => {
 
 

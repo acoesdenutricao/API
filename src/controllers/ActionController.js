@@ -9,9 +9,6 @@ module.exports = {
 
             const action = await Action.create({ information });
 
-            if (!action)
-                throw new Error('Error while creating action.');
-
             return res.status(201).send(action);
         } catch (err) {
             return res.status(400).send({ error: err.message });
@@ -66,7 +63,14 @@ module.exports = {
         try {
             const { action_id, subtitle_id } = req.params;
             const subtitle = await Subtitle.findByPk(subtitle_id)
+
+            if(!subtitle)
+                throw new Error("subtitle not found.");
+
             const action = await Action.findByPk(action_id)
+
+            if(!action)
+                throw new Error("action not found.");
 
             await action.removeSubtitle(subtitle);
 

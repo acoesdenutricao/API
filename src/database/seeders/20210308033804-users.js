@@ -5,7 +5,7 @@ module.exports = {
       {
         name: 'Igor Braga',
         email: 'igor@gmail.com',
-        password: '12345678',
+        password: '$2a$10$03gBAtfGvAk9.rXm8cD99efwGsBCvcoR1KnOO6nNnNW84P9508K1y',
         created_at: new Date(),
         updated_at: new Date()
       }

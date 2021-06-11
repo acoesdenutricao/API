@@ -7,9 +7,6 @@ const truncate = require("../utils/truncate");
 
 
 describe('User', () => {
-  afterEach(async () =>{
-    await truncate("user");
-  });
 
   beforeEach(async () =>{
     await truncate("user");
@@ -24,6 +21,17 @@ describe('User', () => {
     expect(await bcrypt.compare('12345678', user.password)).toBe(true);
   });
 
+  it('should be listed', async () => {
+
+    const user = await factory.create('User'); 
+
+    const response = await request(app)
+    .get("/users") 
+    .set("Authorization", `Bearer ${User.generateJwt(user)}`);
+    
+    expect(response.status).toBe(200);
+  });
+
   it('should be created', async () => {
 
     const response = await request(app)
@@ -34,6 +42,8 @@ describe('User', () => {
       role: 1,
       password: "12345678"
     });
+
+
 
     expect(response.status).toBe(201);
   });
@@ -57,9 +67,6 @@ describe('User', () => {
     const response = await request(app)
     .delete(`/users/${user.id}`)
     .set("Authorization", `Bearer ${User.generateJwt(user)}`);
-
-    console.log(response);
-
     expect(response.status).toBe(200);
   });
 

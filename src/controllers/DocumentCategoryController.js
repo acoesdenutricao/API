@@ -8,9 +8,6 @@ module.exports = {
 
             const documentCategory = await DocumentCategory.create({ category });
 
-            if(!documentCategory)
-                throw new Error("Error while creating document category");
-
             return res.status(201).send(documentCategory);
 
         } catch (err) {

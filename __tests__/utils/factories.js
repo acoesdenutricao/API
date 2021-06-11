@@ -3,6 +3,11 @@ const { factory } = require("factory-girl");
 const User = require('../../src/database/models/User');
 const ActionCategory = require('../../src/database/models/ActionCategory');
 const Action = require("../../src/database/models/Action");
+const Subtitle = require("../../src/database/models/Subtitle");
+const ApproachSubject = require("../../src/database/models/ApproachSubject");
+const DocumentCategory = require("../../src/database/models/DocumentCategory");
+const ExternalLink = require("../../src/database/models/ExternalLink");
+
 
 factory.define('User', User, {
   name: faker.name.findName(),
@@ -13,6 +18,26 @@ factory.define('User', User, {
 
 factory.define('ActionCategory', ActionCategory, {
   category: "test",
+});
+
+factory.define('ApproachSubject', ApproachSubject, {
+  subject: "teste"
+});
+
+factory.define('DocumentCategory', DocumentCategory, {
+  category: "test"
+});
+
+factory.define('ExternalLink', ExternalLink, {
+  name: "Google maps",
+  url: "maps.google.com",
+  user_id: 1,
+  document_category_id: 1
+});
+
+factory.define('Subtitle', Subtitle, {
+  name: "test",
+  meaning: "testing"
 });
 
 factory.define('Action', Action, {

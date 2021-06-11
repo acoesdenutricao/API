@@ -1,3 +1,5 @@
+
+
 const request = require("supertest");
 const app = require('../../src/app');
 const User = require('../../src/database/models/User');
@@ -5,24 +7,23 @@ const factory = require('../utils/factories');
 const truncate = require("../utils/truncate");
 
 
-describe('Action Category', () => {
+describe('Document Category', () => {
   beforeEach(async () =>{
+    await truncate("externalLink");
+    await truncate("documentCategory");
     await truncate("user");
-    await truncate("actionCategory");
   });
 
   it('should be created', async () => {
 
 
-    const user = await factory.create('User', {
-      password: "12345678",
-    }); 
+    const user = await factory.create('User'); 
 
     const response = await request(app)
-    .post("/action-categories") 
+    .post("/document-categories") 
     .set("Authorization", `Bearer ${User.generateJwt(user)}`)
     .send({
-      category: "Testando",
+      category: "teste"
     });
 
     expect(response.status).toBe(201);
@@ -31,12 +32,10 @@ describe('Action Category', () => {
   it('should be not created without', async () => {
 
 
-    const user = await factory.create('User', {
-      password: "12345678",
-    }); 
+    const user = await factory.create('User'); 
 
     const response = await request(app)
-    .post("/action-categories") 
+    .post("/document-categories") 
     .set("Authorization", `Bearer ${User.generateJwt(user)}`)
     .send({
       email: "igorbgalvan@hotmail.com",
@@ -47,7 +46,7 @@ describe('Action Category', () => {
 
   it('should be listed', async () => {
     const response = await request(app)
-    .get("/action-categories");
+    .get("/document-categories");
 
     expect(response.status).toBe(200);
   });
@@ -57,10 +56,10 @@ describe('Action Category', () => {
 
     const user = await factory.create('User'); 
 
-    const actionCategory = await factory.create("ActionCategory");
+    const documentCategory = await factory.create("DocumentCategory");
 
     const response = await request(app)
-    .delete(`/action-categories/${actionCategory.id}`)
+    .delete(`/document-categories/${documentCategory.id}`)
     .set("Authorization", `Bearer ${User.generateJwt(user)}`);
 
     expect(response.status).toBe(200);
@@ -72,7 +71,7 @@ describe('Action Category', () => {
     const user = await factory.create('User'); 
 
     const response = await request(app)
-    .delete("/action-categories/1200")
+    .delete("/document-categories/1200")
     .set("Authorization", `Bearer ${User.generateJwt(user)}`);
 
     expect(response.status).toBe(400);
@@ -83,10 +82,10 @@ describe('Action Category', () => {
 
     const user = await factory.create('User'); 
 
-    const actionCategory = await factory.create("ActionCategory");
+    const documentCategory = await factory.create("DocumentCategory");
 
     const response = await request(app)
-    .put(`/action-categories/${actionCategory.id}`)
+    .put(`/document-categories/${documentCategory.id}`)
     .set("Authorization", `Bearer ${User.generateJwt(user)}`)
     .send({
       category: "testingUp"
@@ -97,11 +96,10 @@ describe('Action Category', () => {
 
   it('should not be updated', async () => {
 
-
     const user = await factory.create('User'); 
 
     const response = await request(app)
-    .put("/action-categories/1200")
+    .put("/document-categories/1200")
     .set("Authorization", `Bearer ${User.generateJwt(user)}`);
 
     expect(response.status).toBe(400);

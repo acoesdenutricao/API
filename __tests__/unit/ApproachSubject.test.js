@@ -1,3 +1,5 @@
+
+
 const request = require("supertest");
 const app = require('../../src/app');
 const User = require('../../src/database/models/User');
@@ -5,24 +7,22 @@ const factory = require('../utils/factories');
 const truncate = require("../utils/truncate");
 
 
-describe('Action Category', () => {
+describe('Approach Subject', () => {
   beforeEach(async () =>{
     await truncate("user");
-    await truncate("actionCategory");
+    await truncate("approachSubject");
   });
 
   it('should be created', async () => {
 
 
-    const user = await factory.create('User', {
-      password: "12345678",
-    }); 
+    const user = await factory.create('User'); 
 
     const response = await request(app)
-    .post("/action-categories") 
+    .post("/approach-subjects") 
     .set("Authorization", `Bearer ${User.generateJwt(user)}`)
     .send({
-      category: "Testando",
+      subject: "teste"
     });
 
     expect(response.status).toBe(201);
@@ -36,7 +36,7 @@ describe('Action Category', () => {
     }); 
 
     const response = await request(app)
-    .post("/action-categories") 
+    .post("/approach-subjects") 
     .set("Authorization", `Bearer ${User.generateJwt(user)}`)
     .send({
       email: "igorbgalvan@hotmail.com",
@@ -47,9 +47,27 @@ describe('Action Category', () => {
 
   it('should be listed', async () => {
     const response = await request(app)
-    .get("/action-categories");
+    .get("/approach-subjects");
 
     expect(response.status).toBe(200);
+  });
+
+  it('should be listed by id', async () => {
+
+    const approachSubject = await factory.create("ApproachSubject");
+
+    const response = await request(app)
+      .get(`/approach-subjects/${approachSubject.id}`);
+
+    expect(response.status).toBe(200);
+  });
+
+  it('should not be listed by id', async () => {
+
+    const response = await request(app)
+      .get("/approach-subjects/1200");
+
+    expect(response.status).toBe(400);
   });
 
   it('should be deleted', async () => {
@@ -57,10 +75,10 @@ describe('Action Category', () => {
 
     const user = await factory.create('User'); 
 
-    const actionCategory = await factory.create("ActionCategory");
+    const approachSubject = await factory.create("ApproachSubject");
 
     const response = await request(app)
-    .delete(`/action-categories/${actionCategory.id}`)
+    .delete(`/approach-subjects/${approachSubject.id}`)
     .set("Authorization", `Bearer ${User.generateJwt(user)}`);
 
     expect(response.status).toBe(200);
@@ -72,7 +90,7 @@ describe('Action Category', () => {
     const user = await factory.create('User'); 
 
     const response = await request(app)
-    .delete("/action-categories/1200")
+    .delete("/approach-subjects/1200")
     .set("Authorization", `Bearer ${User.generateJwt(user)}`);
 
     expect(response.status).toBe(400);
@@ -83,13 +101,13 @@ describe('Action Category', () => {
 
     const user = await factory.create('User'); 
 
-    const actionCategory = await factory.create("ActionCategory");
+    const approachSubject = await factory.create("ApproachSubject");
 
     const response = await request(app)
-    .put(`/action-categories/${actionCategory.id}`)
+    .put(`/approach-subjects/${approachSubject.id}`)
     .set("Authorization", `Bearer ${User.generateJwt(user)}`)
     .send({
-      category: "testingUp"
+      subject: "testingUp"
     });
 
     expect(response.status).toBe(200);
@@ -97,11 +115,10 @@ describe('Action Category', () => {
 
   it('should not be updated', async () => {
 
-
     const user = await factory.create('User'); 
 
     const response = await request(app)
-    .put("/action-categories/1200")
+    .put("/approach-subjects/1200")
     .set("Authorization", `Bearer ${User.generateJwt(user)}`);
 
     expect(response.status).toBe(400);

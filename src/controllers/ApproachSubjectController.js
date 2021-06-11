@@ -8,8 +8,6 @@ module.exports = {
 
             const approachSubject = await ApproachSubject.create({ subject, icon_name });
 
-            if(!approachSubject)
-                throw new Error("Error while creating approach subject.");
 
             return res.status(201).send(approachSubject);
         } catch (err) {

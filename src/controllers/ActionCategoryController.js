@@ -8,9 +8,6 @@ module.exports = {
 
             const actionCategory = await ActionCategory.create({ category });
 
-            if(!actionCategory)
-                throw new Error('Error while creating action category.');
-
             return res.status(201).send(actionCategory);
         } catch (err) {
             return res.status(400).send({ error: err.message });

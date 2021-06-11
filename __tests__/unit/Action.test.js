@@ -7,10 +7,7 @@ const truncate = require("../utils/truncate");
 
 describe('Action', () => {
 
-  afterEach(async () => {
-    await truncate("user");
-    await truncate("action");
-  });
+ 
 
   beforeEach(async () => {
     await truncate("user");
@@ -63,7 +60,7 @@ describe('Action', () => {
     const response = await request(app)
       .get(`/actions/${action.id}`);
 
-      console.log(response);
+      
 
     expect(response.status).toBe(200);
   });
@@ -115,6 +112,41 @@ describe('Action', () => {
       .set("Authorization", `Bearer ${User.generateJwt(user)}`);
 
     expect(response.status).toBe(400);
+  });
+
+  it('should subtitle not found', async () => {
+    const user = await factory.create('User');
+
+    const response = await request(app)
+      .delete("/action/1/1123")
+      .set("Authorization", `Bearer ${User.generateJwt(user)}`);
+
+    expect(response.status).toBe(400);
+  });
+
+  it('should action not found', async () => {
+    const user = await factory.create('User');
+
+    const subtitle = await factory.create('Subtitle');
+
+    const response = await request(app)
+      .delete(`/action/1/${subtitle.id}`)
+      .set("Authorization", `Bearer ${User.generateJwt(user)}`);
+
+    expect(response.status).toBe(400);
+  });
+
+  it('should action be deleted', async () => {
+    const user = await factory.create('User');
+
+    const subtitle = await factory.create('Subtitle');
+    const action = await factory.create('Action');
+
+    const response = await request(app)
+      .delete(`/action/${action.id}/${subtitle.id}`)
+      .set("Authorization", `Bearer ${User.generateJwt(user)}`);
+
+    expect(response.status).toBe(200);
   });
 
 });
