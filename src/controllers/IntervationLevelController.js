@@ -8,9 +8,6 @@ module.exports = {
 
             const intervationLevel = await IntervationLevel.create({ title, color });
 
-            if (!intervationLevel)
-                throw new Error("Error while creating intervation level.");
-
             return res.status(201).send(intervationLevel);
         } catch (err) {
             return res.status(400).send({ error: err.message });

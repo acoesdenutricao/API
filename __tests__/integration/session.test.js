@@ -3,7 +3,6 @@ const app = require('../../src/app');
 const User = require("../../src/database/models/User");
 const factory = require('../utils/factories');
 const truncate = require("../utils/truncate");
-const flushPromises = require('flush-promises');
 
 
 

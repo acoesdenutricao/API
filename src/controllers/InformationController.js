@@ -55,7 +55,7 @@ module.exports = {
       var information_id = information.id;
       const category_information = await CategoryInformation.create({ action_id: action_id, information_id: information_id, action_category_id: action_category_id });
 
-      return res.status(200).send({ information, category_information });
+      return res.status(201).send({ information, category_information });
     } catch (err) {
       return res.status(400).send({ error: err.message });
     }

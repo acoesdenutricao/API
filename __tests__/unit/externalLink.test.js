@@ -13,6 +13,7 @@ describe('External Link', () => {
     await truncate("externalLink");
     await truncate("user");
     await truncate("documentCategory");
+    jest.setTimeout(15000)
   });
 
   it('should be created', async () => {

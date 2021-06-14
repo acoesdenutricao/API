@@ -7,7 +7,8 @@ const Subtitle = require("../../src/database/models/Subtitle");
 const ApproachSubject = require("../../src/database/models/ApproachSubject");
 const DocumentCategory = require("../../src/database/models/DocumentCategory");
 const ExternalLink = require("../../src/database/models/ExternalLink");
-
+const IntervationLevel = require("../../src/database/models/IntervationLevel");
+const Information = require("../../src/database/models/Information");
 
 factory.define('User', User, {
   name: faker.name.findName(),
@@ -33,6 +34,19 @@ factory.define('ExternalLink', ExternalLink, {
   url: "maps.google.com",
   user_id: 1,
   document_category_id: 1
+});
+
+factory.define('IntervationLevel', IntervationLevel, {
+  title: "test",
+  color: "#FFF",
+});
+
+factory.define('Information', Information, {
+  user_id: 1, 
+  approach_subject_id: 1,
+  intervation_level_id: 1,
+  action_category_id: 1,
+  action_id: 1
 });
 
 factory.define('Subtitle', Subtitle, {
