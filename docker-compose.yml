@@ -6,11 +6,11 @@ services:
     container_name: nut_api
     working_dir: /app
     ports:
-      - '4000:4000'
+      - '4001:4001'
     volumes:
       - .:/app
     depends_on:
-      - db
+      - nut_db
     command: bash -c "npm install && npm run dev"
 
   nut_db:
@@ -19,10 +19,8 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     volumes:
-      - db:/var/lib/postgresql/data
+      - nut_db:/var/lib/postgresql/data
     container_name: nut_db
     
 volumes:
-  postgresql:
-  postgresql_data: 
-  db:
+  nut_db:

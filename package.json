@@ -1,26 +1,13 @@
 {
   "name": "api",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "description": "API desenvolvida para Núcleo de Praticas em Engenharia de Software",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
-    "sonar": "node sonar-project.js",
-    "pretest": "TEST_ENV=test yarn sequelize db:migrate",
-    "test": "TEST_ENV=test jest --coverage",
-    "posttest": "TEST_ENV=test yarn sequelize db:migrate:undo:all"
+    "start": "node src/server.js"
   },
-  "author": "",
+  "author": "Turma 2021/1 T05",
   "license": "ISC",
-  "devDependencies": {
-    "factory-girl": "^5.0.4",
-    "faker": "^5.5.3",
-    "nodemon": "^2.0.7",
-    "sonarqube-scanner": "^2.8.0",
-    "sqlite3": "^5.0.2",
-    "supertest": "^6.1.3"
-  },
   "dependencies": {
     "@brazilian-utils/validators": "^0.1.9",
     "await-exec": "^0.1.2",
@@ -29,17 +16,10 @@
     "dotenv": "^8.2.0",
     "email-validator": "^2.0.4",
     "express": "^4.17.1",
-    "jest": "^27.0.4",
-    "jest-sonar-reporter": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.5.1",
     "sequelize": "^6.5.0",
     "sequelize-cli": "^6.2.0",
     "yarn": "^1.22.10"
-  },
-  "jestSonar": {
-    "reportPath": "__tests__/coverage",
-    "reportFile": "clover.xml",
-    "indent": 4
   }
 }
