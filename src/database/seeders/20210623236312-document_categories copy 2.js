@@ -3,26 +3,15 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('document_categories', [
       {
-        category: "Referências",
+        category: "Políticas",
         created_at: new Date(),
         updated_at: new Date()
       },
       {
-        category: "Documentos Técnicos",
+        category: "Cartilhas, Guias e Manuais",
         created_at: new Date(),
         updated_at: new Date()
       },
-      {
-        category: "Documentos Legais",
-        created_at: new Date(),
-        updated_at: new Date()
-      },
-      {
-        category: "Manuais de Apoio",
-        created_at: new Date(),
-        updated_at: new Date()
-      },
-
     ]);
   },
 
