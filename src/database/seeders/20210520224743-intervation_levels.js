@@ -5,25 +5,25 @@ module.exports = {
     await queryInterface.bulkInsert('intervation_levels', [
       {
         title: "Diagnóstico",
-        color: "#08a494",
+        color: "#DBBE8C",
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         title: "Prevenção de Doenças",
-        color: "#08a494",
+        color: "#B88DDC",
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         title: "Promoção da Saúde",
-        color: "#08a494",
+        color: "#C6CC83",
         created_at: new Date(),
         updated_at: new Date()
       },
       {
         title: "Assistência, Tratamento e Cuidado",
-        color: "#08a494",
+        color: "#8CC8DB",
         created_at: new Date(),
         updated_at: new Date()
       },
