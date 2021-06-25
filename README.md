@@ -21,7 +21,11 @@ Antes de iniciar, certifique-se de cumprir os seguintes requisitos:
 ```jsx
 sudo docker-compose up
 ```     
-  3. Após o docker iniciar por completo, teste da maneira que achar melhor 🙂.
+  3. Após o docker inicializar, em um novo terminal, rode o arquivo bash com o seguinte comando:
+```jsx
+sudo ./db_create_migrate.sh
+```   
+  5. Após criar o banco, migrar e povoar as tabelas, teste da maneira que achar melhor 🙂.
 
 ## Documentação
   Para facilitar o teste, um arquivo ``` insomnia.yml ``` está na raiz do projeto, basta importar no Insomnia para usá-lo.
