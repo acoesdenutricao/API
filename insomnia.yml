@@ -1,11 +1,11 @@
 _type: export
 __export_format: 4
-__export_date: 2021-05-19T02:43:09.473Z
+__export_date: 2021-06-26T21:53:38.886Z
 __export_source: insomnia.desktop.app:v2021.3.0
 resources:
   - _id: req_1245e23722aa44efbec8d80c406a0ca9
     parentId: fld_025b4fdb2f23484ba0ae2fc8382b3b04
-    modified: 1621038659118
+    modified: 1623381548553
     created: 1621035498259
     url: "{{ _.baseUrl }}/auth"
     name: List
@@ -15,7 +15,7 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"email": "igor@hotmail.com",
+        	"email": "test@gmail.com",
         	"password": "12345678"
         }
     parameters: []
@@ -146,24 +146,15 @@ resources:
     _type: request
   - _id: req_d3439facea834310a0d6c2d224a12e98
     parentId: fld_65b3872ae9344e929551d9de235694ef
-    modified: 1621391950134
+    modified: 1622036567140
     created: 1621118708268
-    url: "{{ _.baseUrl }}/information/categories"
+    url: "{{ _.baseUrl }}/information/2/1/categories"
     name: Categories
     description: ""
-    method: POST
-    body:
-      mimeType: application/json
-      text: |-
-        {
-        	"approach_subject_id": 2,
-        	"intervation_level_id": 1
-        }
+    method: GET
+    body: {}
     parameters: []
-    headers:
-      - name: Content-Type
-        value: application/json
-        id: pair_45a3280b4fbe4da49adc225ec025bd83
+    headers: []
     authentication: {}
     metaSortKey: -1620672841407.5
     isPrivate: false
@@ -218,9 +209,9 @@ resources:
     _type: request
   - _id: req_d5d6256a0634404e8209f87c2b567160
     parentId: fld_9a42144d90884b26b3aa9c49a8c1f4ef
-    modified: 1620012729315
+    modified: 1621467416859
     created: 1620012591806
-    url: "{{ _.baseUrl }}/approach-subjects/1"
+    url: "{{ _.baseUrl }}/approach-subjects/3"
     name: Update
     description: ""
     method: PUT
@@ -228,14 +219,16 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"subject": "atualizado geral"
+        	"icon_name": "google-circles-communities"
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
         id: pair_a53b92ff9ecf4c7fa76b49ab2dba8ac6
-    authentication: {}
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEwMzg2NjB9.PgXV3VN7EL5XbvMw5QUuRiGRhGWi8e8fPpYICJ03bdQ
     metaSortKey: -1620012591806
     isPrivate: false
     settingStoreCookies: true
@@ -330,6 +323,27 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_50efaf101f2f40f886c3a869edf614f0
+    parentId: fld_9a42144d90884b26b3aa9c49a8c1f4ef
+    modified: 1623381562954
+    created: 1622434853779
+    url: "{{ _.baseUrl }}/approach-subjects/3"
+    name: Get
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1620012221984.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_4bc3196b7d6a4ca89c14581b30f1a510
     parentId: fld_874921f7530f4e17a2420757d79c9164
     modified: 1620012390103
@@ -363,9 +377,9 @@ resources:
     _type: request_group
   - _id: req_01f4aab1d0a84a2396262c8330c08da0
     parentId: fld_874921f7530f4e17a2420757d79c9164
-    modified: 1620012383572
+    modified: 1621467092306
     created: 1620011883567
-    url: "{{ _.baseUrl }}/intervation-levels/3"
+    url: "{{ _.baseUrl }}/intervation-levels/1"
     name: Update
     description: ""
     method: PUT
@@ -421,6 +435,27 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_d54b8bee10ff49d483225b87107aa3a5
+    parentId: fld_874921f7530f4e17a2420757d79c9164
+    modified: 1622434994036
+    created: 1622434975840
+    url: "{{ _.baseUrl }}/intervation-levels/1"
+    name: Get
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1620011875584
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_26444c95198b4cc982cdfae1727e8c47
     parentId: fld_874921f7530f4e17a2420757d79c9164
     modified: 1620848420908
@@ -444,9 +479,9 @@ resources:
     _type: request
   - _id: req_33a27a1cc837481785d06027fc5fdf4d
     parentId: fld_b1e2c17de6764b26aee2a9d06964119d
-    modified: 1621042258447
+    modified: 1623351098746
     created: 1621042238930
-    url: "{{ _.baseUrl }}/action/1/1"
+    url: "{{ _.baseUrl }}/action/1/10"
     name: delete Subtitle
     description: ""
     method: DELETE
@@ -546,6 +581,27 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_471acb6882d14cec9edd23cb2ec44ad4
+    parentId: fld_b1e2c17de6764b26aee2a9d06964119d
+    modified: 1622597801147
+    created: 1622596738396
+    url: "{{ _.baseUrl }}/actions/1"
+    name: Get
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1620009461107.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_03b50a940f4c4f239f73c70e2da3dcfa
     parentId: fld_b1e2c17de6764b26aee2a9d06964119d
     modified: 1621390740979
@@ -579,9 +635,9 @@ resources:
     _type: request
   - _id: req_9a62b1efa7b14ec48fb8e8d0f97f58e7
     parentId: fld_e3c3ec91ea5d439697a4cdd583309da0
-    modified: 1620009367647
+    modified: 1623284385542
     created: 1620008868821
-    url: "{{ _.baseUrl }}/action-categories/2"
+    url: "{{ _.baseUrl }}/action-categories/1"
     name: Update
     description: ""
     method: PUT
@@ -589,15 +645,16 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"category": "Test",
-        	"range": "Até 6 anos"
+            "category": "Ações Universal"
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
         id: pair_ff520e784c9a48d29366ea9a2f658814
-    authentication: {}
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEzNzc0NDV9.Z37O5rGWO3_wDodVd_9O0mVuWJzVsiZdJHFgUGaGg-0
     metaSortKey: -1620008868822
     isPrivate: false
     settingStoreCookies: true
@@ -783,6 +840,38 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
+  - _id: req_3f093278e7b74ff29942c5631202940f
+    parentId: fld_ced68f89c3b44df7b98f173d30d45b4a
+    modified: 1622597766530
+    created: 1622597760055
+    url: "{{ _.baseUrl }}/subtitles"
+    name: Create Only Subtitle
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"name": "OBS",
+        	"meaning": "os indicadores e pontos de corte adotados para o diagnóstico dos indivíduos em qualquer fase do curso da vida deverão ser compatibilizados com os adotados pelo Ministério da Saúde."
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_db1b64ef74e6492d82fda30058cb5302
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEwMzg2MDF9.7bk4tF4WaeWuJ8mtj6iRCJB0CeUvgZZcBQUBMOtVXJU
+    metaSortKey: -1619652973730.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_69d26bdd03a24a989b37c89220d07ab6
     parentId: fld_ced68f89c3b44df7b98f173d30d45b4a
     modified: 1620008714267
@@ -806,7 +895,7 @@ resources:
     _type: request
   - _id: req_7f4ec628de16413d989c8b7db27ac4f3
     parentId: fld_968b0f0e967c422b862cb6349fe44ca0
-    modified: 1620013855396
+    modified: 1623381465579
     created: 1620013735021
     url: "{{ _.baseUrl }}/external-links/1"
     name: Update
@@ -817,14 +906,16 @@ resources:
       text: |-
         {
         	"name": "google maps",
-        	"url": "maps.google.com.br"
+        	"url": "google.com.br"
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
         id: pair_3e462d734757476997e981631a7f7ccd
-    authentication: {}
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEwMzg2MDF9.7bk4tF4WaeWuJ8mtj6iRCJB0CeUvgZZcBQUBMOtVXJU
     metaSortKey: -1620013735021
     isPrivate: false
     settingStoreCookies: true
@@ -846,16 +937,18 @@ resources:
     _type: request_group
   - _id: req_b7ec174c28af4a1ab7444b1ccee5f0cd
     parentId: fld_968b0f0e967c422b862cb6349fe44ca0
-    modified: 1620013758724
+    modified: 1624578741680
     created: 1620013725162
-    url: "{{ _.baseUrl }}/external-links/1"
+    url: "{{ _.baseUrl }}/external-links/7"
     name: Delete
     description: ""
     method: DELETE
     body: {}
     parameters: []
     headers: []
-    authentication: {}
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEwMzg2MDF9.7bk4tF4WaeWuJ8mtj6iRCJB0CeUvgZZcBQUBMOtVXJU
     metaSortKey: -1620013725162
     isPrivate: false
     settingStoreCookies: true
@@ -867,9 +960,9 @@ resources:
     _type: request
   - _id: req_0411af7fca2044bca0e7e0ed2988d682
     parentId: fld_968b0f0e967c422b862cb6349fe44ca0
-    modified: 1620013829116
+    modified: 1624578755799
     created: 1619385379120
-    url: "{{ _.baseUrl }}/1/2/external-links"
+    url: "{{ _.baseUrl }}/200/200/external-links"
     name: Create
     description: ""
     method: POST
@@ -885,7 +978,9 @@ resources:
       - name: Content-Type
         value: application/json
         id: pair_c07b3ac3af544a8881904c55c6733f18
-    authentication: {}
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEwMzg2MDF9.7bk4tF4WaeWuJ8mtj6iRCJB0CeUvgZZcBQUBMOtVXJU
     metaSortKey: -1619385379120
     isPrivate: false
     settingStoreCookies: true
@@ -897,7 +992,7 @@ resources:
     _type: request
   - _id: req_5a202b1302f04d558f1938c18e693e25
     parentId: fld_968b0f0e967c422b862cb6349fe44ca0
-    modified: 1621387048783
+    modified: 1621468167985
     created: 1619384481755
     url: "{{ _.baseUrl }}/1/user-external-links"
     name: indexFromUsers
@@ -927,9 +1022,9 @@ resources:
     _type: request
   - _id: req_458aea1d72d54fb9b11e5cda708562cd
     parentId: fld_968b0f0e967c422b862cb6349fe44ca0
-    modified: 1620013838801
+    modified: 1621467717417
     created: 1619385337538
-    url: "{{ _.baseUrl }}/2/category-external-links"
+    url: "{{ _.baseUrl }}/1/category-external-links"
     name: indexFromCategory
     description: ""
     method: GET
@@ -957,7 +1052,7 @@ resources:
     _type: request
   - _id: req_f0e5cd5928a64991b54deead2fdded23
     parentId: fld_5277c5ea994146b29fdfb924c1f169cc
-    modified: 1620013686987
+    modified: 1623381373862
     created: 1620013011570
     url: "{{ _.baseUrl }}/document-categories/1"
     name: Update
@@ -967,14 +1062,16 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"category": "idoso alterado"
+        	"category": "Referências"
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
         id: pair_08d073670f9c409984c5c28206e89ccc
-    authentication: {}
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxMjNAaG90bWFpbC5jb20iLCJpYXQiOjE2MjMzODEyNzl9.6ls-uPyXCFpPR2I0_kahVUq8gCw0Lmv5pHiKInfWihA
     metaSortKey: -1620013011570
     isPrivate: false
     settingStoreCookies: true
@@ -1038,7 +1135,7 @@ resources:
     _type: request
   - _id: req_bdc399938ddc4847a11d350a8770e6cb
     parentId: fld_5277c5ea994146b29fdfb924c1f169cc
-    modified: 1620013677349
+    modified: 1621467627771
     created: 1619383397047
     url: "{{ _.baseUrl }}/document-categories"
     name: Create
@@ -1048,14 +1145,16 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"category": "Idoso"
+        	"category": "Manuais de Apoio"
         }
     parameters: []
     headers:
       - name: Content-Type
         value: application/json
         id: pair_64eb39466f764b879839fccd885132de
-    authentication: {}
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEwMzg2MDF9.7bk4tF4WaeWuJ8mtj6iRCJB0CeUvgZZcBQUBMOtVXJU
     metaSortKey: -1619383397047
     isPrivate: false
     settingStoreCookies: true
@@ -1067,7 +1166,7 @@ resources:
     _type: request
   - _id: req_867c5de1558e406e8b8b71a75af6398d
     parentId: fld_61305497bbc34772b7fac2601467e9a2
-    modified: 1619386243213
+    modified: 1621550786596
     created: 1619386156342
     url: "{{ _.baseUrl }}/users/2"
     name: Delete
@@ -1076,7 +1175,9 @@ resources:
     body: {}
     parameters: []
     headers: []
-    authentication: {}
+    authentication:
+      type: bearer
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MjEzNzc0NDV9.Z37O5rGWO3_wDodVd_9O0mVuWJzVsiZdJHFgUGaGg-0
     metaSortKey: -1619386156342
     isPrivate: false
     settingStoreCookies: true
@@ -1098,7 +1199,7 @@ resources:
     _type: request_group
   - _id: req_a6efe1f4712d4a8ea1ca0e26f165ad62
     parentId: fld_61305497bbc34772b7fac2601467e9a2
-    modified: 1621038169406
+    modified: 1623124130947
     created: 1619376030719
     url: "{{ _.baseUrl }}/users"
     name: Create
@@ -1108,8 +1209,8 @@ resources:
       mimeType: application/json
       text: |-
         {
-        	"name": "Igor",
-        	"email":"igor@hotmail.com",
+        	"name": "Teste",
+        	"email":"test123@hotmail.com",
         	"password": "12345678"
         }
     parameters: []
@@ -1152,11 +1253,11 @@ resources:
     _type: request
   - _id: env_cab4bb9bc6321358139251201cb9789e051756fb
     parentId: wrk_97073fefbc0e40a99980111b675f23df
-    modified: 1621377466351
+    modified: 1624578711439
     created: 1619375991166
     name: Base Environment
     data:
-      baseUrl: http://191.252.202.56:4000
+      baseUrl: http://191.252.202.56:4001
     dataPropertyOrder:
       "&":
         - baseUrl
