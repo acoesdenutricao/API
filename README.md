@@ -34,9 +34,9 @@ sudo ./db_create_migrate.sh
 
 | HTTP Request | Endpoint | Token | Body | Descrição |
 | ------ | ------ | ------ | ------ | ------ |
-| GET | /user | JWT  |  | Lista todos os usuários cadastrados |
-| POST | /user | | {name: ```String```, email:```String```, password: ```String```}    | Cadastra um novo usuário |
-| DELETE | /user | JWT |  | Deleta um usuário pelo id |
+| GET | /users | JWT  |  | Lista todos os usuários cadastrados |
+| POST | /users | | {name: ```String```, email:```String```, password: ```String```}    | Cadastra um novo usuário |
+| DELETE | /users/:id | JWT |  | Deleta um usuário |
 
 ### Auth
 
