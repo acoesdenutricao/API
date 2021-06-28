@@ -1,0 +1,786 @@
+#%RAML 1.0  
+title: Ações de Nutrição
+baseUri: http://localhost:4000/docs
+version: v1.0
+
+#rota
+/users:
+  #Tipo de requisição
+  post:
+      description: Essa rota cria um usuário administrador do sistema
+      
+      #respostas 200 certa e 400 pra errada
+      queryParameters:
+        name:
+          description: Nome do usuário administrador
+          example: Maria da silva
+          required: true
+          type: string
+        email:
+          description: Email do usuário administrador
+          example: maria@gmail.com
+          required: true
+          type: string  
+      responses:
+        200:
+          description: Usuário criado.
+          body:
+            application/json:
+              example: |
+                {
+                  "user": {
+                    "id": 1,
+                    "name": "Maria",
+                    "email":"maria@gmail.com"
+                  }
+                }
+        400:
+          description: Erro ao criar usuário.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "User not created"
+                  }
+  get:
+      description: Essa rota retorna todos os usuários administradores do sistema.
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado todos os usuários administradores do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "user": {
+                    "id": 1,
+                    "name": "Maria",
+                    "email":"maria@gmail.com"
+                  },
+                  "user": {
+                    "id": 2,
+                    "name": "João",
+                    "email":"João@gmail.com"
+                  },
+                  "user": {
+                    "id": 3,
+                    "name": "Gabriel",
+                    "email":"gabriel@gmail.com"
+                  }
+                }
+        400:
+          description: Erro ao listar os usuários.
+          body:
+            application/json:
+              example: |
+                  {
+                    "user": ""
+                  }
+#--------------------------------------------------------------------------------------------------------------------------------------------
+/users/:id:
+  #Tipo de requisição
+  delete:
+      description: Essa rota deleta um usuário administrador do sistema
+      queryParameters:
+        id:
+          description: Id do usuário
+          example: 1
+          required: true
+          type: integer
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado o usuário que foi removido do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "user": {
+                    "id": 1,
+                    "name": "Maria",
+                    "email":"maria@gmail.com"
+                  }
+                }
+        400:
+          description: Erro ao remover o usuário.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "User not deleted"
+                  }
+#--------------------------------------------------------------------------------------------------------------------------------------------
+/approach-subjects:
+  #Tipo de requisição
+  post:
+      description: Essa rota cria um sujeito da abordagem do sistema
+      
+      #respostas 200 certa e 400 pra errada
+      queryParameters:
+        subject:
+          description: Categoria de sujeitos da abordagem
+          example: Indivíduo
+          required: true
+          type: string  
+      responses:
+        200:
+          description: Sujeito da abordagem selecionado.
+          body:
+            application/json:
+              example: |
+                {
+                  "approach-subjects": {
+                    "id": 1,
+                    "subject": "Indivíduo"
+                  }
+                }
+        400:
+          description: Erro ao criar sujeito da abordagem.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Sujeito da abordagem não criado"
+                  }
+  get:
+      description: Essa rota retorna todas os sujeitos de abordagem do sistema.
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado todas os sujeitos de abordagem do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "approach-subjects": {
+                    "Id": "1",
+                    "subject": "Indivíduo"
+                  },
+                  "approach-subjects": {
+                    "Id": "2",
+                    "subject": "Família"
+                  }
+                }
+        400:
+          description: Erro ao listar todos os sujeitos da abordagem.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao listar"
+                  } 
+#--------------------------------------------------------------------------------------------------------------------------------------------
+/approach-subjects/:id:
+  #Tipo de requisição
+  delete:
+      description: Essa rota deleta um sujeito da abordagem do sistema
+      queryParameters:
+        id:
+          description: id do sujeito da abordagem
+          example: 1
+          required: true
+          type: integer
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado o sujeito da abordagem que foi removido do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "approach-subjects": {
+                    "Id": "1",
+                    "subject": "Família"
+                  }
+                }
+        400:
+          description: Erro ao remover o sujeito da abordagem.
+          body:
+            application/json:
+              example: |
+                  {
+                    "approach-subjects": ""
+                  }
+  put:
+      description: Essa rota atualiza um sujeito da abordagem do sistema
+      queryParameters:
+        id:
+          description: id do sujeito da abordagem
+          example: 1
+          required: true
+          type: integer
+        subject:
+          description: sujeito da abordagem
+          example: Família
+          required: true
+          type: string
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado o sujeito da abordagem que foi atualizado no sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "approach-subjects": {
+                    "Id": 1,
+                    "subject": "Família"
+                  }
+                }
+        400:
+          description: Erro ao atualizar o sujeito da abordagem.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao atualizar o sujeito da abordagem"
+                  }
+#--------------------------------------------------------------------------------------------------------------------------------------------                
+/intervation-levels:
+  #Tipo de requisição
+  post:
+      description: Essa rota cria um nível de intervenção do sistema
+      
+      #respostas 200 certa e 400 pra errada
+      queryParameters:
+        title: :
+          description: Nível de intervenção
+          example: Diagnóstico
+          required: true
+          type: string  
+      responses:
+        200:
+          description: Nível de intervenção criado.
+          body:
+            application/json:
+              example: |
+                {
+                  "intervation-levels": {
+                    "id": 1,
+                    "subject": "Diagnóstico"
+                  }
+                }
+        400:
+          description: Erro ao criar um nível de intervenção.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Nível de intervenção não criado"
+                  }  
+  get:
+      description: Essa rota retorna todas os níveis de intervenção do sistema.
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado todas os níveis de intervenção do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "approach-subjects": {
+                    "Id": "1",
+                    "subject": "Diagnóstico"
+                  },
+                  "approach-subjects": {
+                    "Id": "2",
+                    "subject": "Promoção da saúde"
+                  }
+                }
+        400:
+          description: Erro ao listar todos os níveis de intervenção.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao listar"
+                  } 
+#--------------------------------------------------------------------------------------------------------------------------------------------
+/intervation-levels/:id:
+  #Tipo de requisição
+  delete:
+      description: Essa rota deleta um nível de intervenção do sistema
+      queryParameters:
+        id:
+          description: id do nível de intervenção
+          example: 1
+          required: true
+          type: integer
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado o nível de intervenção que foi removido do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "approach-subjects": {
+                    "Id": "1",
+                    "subject": "Diagnóstico"
+                  }
+                }
+        400:
+          description: Erro ao remover o nível de intervenção.
+          body:
+            application/json:
+              example: |
+                  {
+                    "intervation-levels": ""
+                  }
+  put:
+      description: Essa rota atualiza um nível de intervenção do sistema
+      queryParameters:
+        id:
+          description: id do nível de intervenção
+          example: 1
+          required: true
+          type: integer
+        title: :
+          description: nível de intervenção
+          example: Diagnóstico
+          required: true
+          type: string
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado o nível de intervenção que foi atualizado no sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "approach-subjects": {
+                    "Id": 1,
+                    "subject": "Diagnóstico"
+                  }
+                }
+        400:
+          description: Erro ao atualizar o nível de intervenção.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao atualizar o nível de intervenção"
+                  }
+#--------------------------------------------------------------------------------------------------------------------------------------------
+/:id/actions:
+  #Tipo de requisição
+  post:
+      description: Essa rota cria conteúdos de uma determinada ação do sistema
+      
+      #respostas 200 certa e 400 pra errada
+      queryParameters:
+        information: :
+          description: Conteúdo de um tipo de ação
+          example: Diagnóstico nutricional, avaliação e monitoramento do estado nutricional, dom base nos conteúdos dietéticos, clínicos, bioquímicos e antropométricos...
+          required: true
+          type: string  
+      responses:
+        200:
+          description: Conteúdo da ação foi cadastrado.
+          body:
+            application/json:
+              example: |
+                {
+                  "intervation-levels": {
+                    "id": 1,
+                    "information": "Diagnóstico nutricional, avaliação e monitoramento do estado nutricional, dom base nos conteúdos dietéticos, clínicos, bioquímicos e antropométricos..."
+                  }
+                }
+        400:
+          description: Erro ao cadastrar o conteúdo da ação
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Conteúdo da ação não foi cadastrado"
+                  }  
+  get:
+      description: Essa rota retorna todos os conteúdos cadastrados de uma determinada ação do sistema.
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado todos os conteúdos cadastrados de uma determinada ação do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "actions": {
+                    "Id": "1",
+                    "subject": "Diagnóstico nutricional, avaliação e monitoramento do estado nutricional, dom base nos conteúdos dietéticos, clínicos, bioquímicos e antropométricos..."
+                  },
+                  "actions": {
+                    "Id": "1",
+                    "subject": "Identificação dos portadores de patologias e deficiências associadas a nutrição, incluindo desnutrição infantil..."
+                  }
+                }
+        400:
+          description: Erro ao listar todos os conteúdos cadastrados de uma ação.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao listar"
+                  } 
+#--------------------------------------------------------------------------------------------------------------------------------------------                 
+/actions/:id:
+  #Tipo de requisição
+  delete:
+      description: Essa rota deleta conteúdos de uma determinada ação do sistema
+      queryParameters:
+        id:
+          description: id do conteúdo da ação
+          example: 1
+          required: true
+          type: integer
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado o conteúdos de uma determinada ação que foi removido do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "actions": {
+                    "Id": "1",
+                    "subject": "Identificação dos portadores de patologias e deficiências associadas a nutrição, incluindo desnutrição infantil..."
+                  }
+                }
+        400:
+          description: Erro ao remover o conteúdo da ação do sistema.
+          body:
+            application/json:
+              example: |
+                  {
+                    "actions": ""
+                  }
+  put:
+      description: Essa rota atualiza conteúdo de uma determinada ação do sistema
+      queryParameters:
+        id:
+          description: id do conteúdo da ação
+          example: 1
+          required: true
+          type: integer
+        information: :
+          description: Conteúdo da ação
+          example: Identificação dos portadores de patologias e deficiências associadas a nutrição, incluindo desnutrição infantil...
+          required: true
+          type: string
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado o conteúdo da ação que foi atualizado no sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "actions": {
+                    "Id": 1,
+                    "information": "Identificação dos portadores de patologias e deficiências associadas a nutrição..."
+                  }
+                }
+        400:
+          description: Erro ao atualizar conteúdo da ação.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao atualizar o conteúdo da ação"
+                  }
+#--------------------------------------------------------------------------------------------------------------------------------------------                 
+/auth:
+  #Tipo de requisição
+  post:
+      description: Essa rota permite que o usuário faça login
+      
+      #respostas 200 certa e 400 pra errada
+      queryParameters:
+        email: :
+          description: email do usuário
+          example: igor@hotmail.com
+          required: true
+          type: string  
+        password: :
+          description: senha do usuário
+          example: 12345678
+          required: true
+          type: string 
+      responses:
+        200:
+          description: Login efetuado.
+          body:
+            application/json:
+              example: |
+                {
+                  "auth": {
+                    "id": 1,
+                    "email": "igor@hotmail.com"
+                    "password": "12345678"
+                  }
+                }
+        400:
+          description: Erro ao efetuar login.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Login não efetuado"
+                  }  
+#--------------------------------------------------------------------------------------------------------------------------------------------                 
+/action-categories:
+  #Tipo de requisição
+  post:
+      description: Essa rota cria uma categoria da ação do sistema
+      
+      #respostas 200 certa e 400 pra errada
+      queryParameters:
+        category: :
+          description: Categoria da ação
+          example: > 5-9 anos
+          required: true
+          type: string  
+      responses:
+        200:
+          description: Categoria da ação criada.
+          body:
+            application/json:
+              example: |
+                {
+                  "action-categories": {
+                    "id": 1,
+                    "category": "> 5-9 anos"
+                  }
+                }
+        400:
+          description: Erro ao criar uma categoria da ação.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Categoria da ação não foi criada"
+                  }  
+  get:
+      description: Essa rota retorna todas as categorias de ações do sistema.
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado todas as categorias de ações do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "action-categories": {
+                    "Id": "1",
+                    "category": "> 5-9 anos"
+                  },
+                  "action-categories": {
+                    "Id": "2",
+                    "category": "Gestantes"
+                  }
+                }
+        400:
+          description: Erro ao listar todas as categorias de ações do sistema.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao listar"
+                  } 
+#--------------------------------------------------------------------------------------------------------------------------------------------                 
+/action-categories/:id:
+  #Tipo de requisição
+  delete:
+      description: Essa rota deleta uma categoria de ação do sistema
+      queryParameters:
+        id:
+          description: id da categoria da ação
+          example: 1
+          required: true
+          type: integer
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado categoria da ação que foi removida do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "action-categories": {
+                    "Id": "1",
+                    "category": "> 5-9 anos"
+                  }
+                }
+        400:
+          description: Erro ao remover a categoria da ação.
+          body:
+            application/json:
+              example: |
+                  {
+                    "action-categories": ""
+                  }
+  put:
+      description: Essa rota atualiza uma categoria da ação do sistema
+      queryParameters:
+        id:
+          description: id da categoria da ação
+          example: 1
+          required: true
+          type: integer
+        category:
+          description: categoria da ação
+          example: > 5-9 anos
+          required: true
+          type: string
+        range:
+          description: categoria da ação
+          example: Até 6 anos
+          required: true
+          type: string
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornada a categoria da ação que foi atualizada no sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "action-categories": {
+                    "Id": 1,
+                    "category": "Até 6 anos"
+                  }
+                }
+        400:
+          description: Erro ao atualizar a categoria da ação.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao atualizar a categoria da ação"
+                  }
+#--------------------------------------------------------------------------------------------------------------------------------------------                 
+/document-categories:
+  #Tipo de requisição
+  post:
+      description: Essa rota cria uma categoria de documentos do sistema
+      
+      #respostas 200 certa e 400 pra errada
+      queryParameters:
+        category:
+          description: Categoria de documentos do sistema
+          example: Manuais de Apoio
+          required: true
+          type: string  
+      responses:
+        200:
+          description: Categoria de documento foi criada.
+          body:
+            application/json:
+              example: |
+                {
+                  "document-categories": {
+                    "id": 1,
+                    "category": "Manuais de Apoio"
+                  }
+                }
+        400:
+          description: Erro ao criar uma categoria de documento.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Categoria de documento não foi criada"
+                  }  
+  get:
+      description: Essa rota retorna todas as categorias de documentos do sistema.
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado categoria de documento do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "document-categories": {
+                    "Id": "1",
+                    "category": "Manuais de apoio"
+                  },
+                  "document-categories": {
+                    "Id": "2",
+                    "subject": "Documentos Legais"
+                  }
+                }
+        400:
+          description: Erro ao listar todas as categorias de documentos.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao listar"
+                  } 
+#--------------------------------------------------------------------------------------------------------------------------------------------
+/document-categories/:id:
+  #Tipo de requisição
+  delete:
+      description: Essa rota deleta uma categoria de documento do sistema
+      queryParameters:
+        id:
+          description: id da categoria de documento
+          example: 1
+          required: true
+          type: integer
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado a categoria de documento que foi removida do sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "document-categories": {
+                    "Id": "1",
+                    "category": "Manuais de Apoio"
+                  }
+                }
+        400:
+          description: Erro ao remover a categoria de documento.
+          body:
+            application/json:
+              example: |
+                  {
+                    "document-categories": ""
+                  }
+  put:
+      description: Essa rota atualiza uma categoria de documento do sistema
+      queryParameters:
+        id:
+          description: id da categoria de documento
+          example: 1
+          required: true
+          type: integer
+        category:
+          description: categoria do documento
+          example: Manual do sistema
+          required: true
+          type: string
+      #respostas 200 certa e 400 pra errada
+      responses:
+        200:
+          description: É retornado o sujeito da abordagem que foi atualizado no sistema.
+          body:
+            application/json:
+              example: |
+                {
+                  "document-categories": {
+                    "Id": 1,
+                    "category": "Manual de apoio"
+                  }
+                }
+        400:
+          description: Erro ao atualizar a categoria do documento.
+          body:
+            application/json:
+              example: |
+                  {
+                    "error": "Erro ao atualizar a categoria do documento"
+                  }
+#--------------------------------------------------------------------------------------------------------------------------------------------
